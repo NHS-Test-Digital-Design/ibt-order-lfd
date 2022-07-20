@@ -28,7 +28,7 @@ router.post('/reason-category-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/test-reason-work')
     } else if (category == "another") {
         res.redirect('order-lateral-flow-kits/england-exit-page')
-        // if no selection is made send to the health route
+        // if no selection is made send down the health route
     } else {
         res.redirect('order-lateral-flow-kits/test-reason-health')
     }
