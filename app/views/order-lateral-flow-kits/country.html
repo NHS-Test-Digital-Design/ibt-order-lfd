@@ -1,46 +1,41 @@
 {% set pageTitle = "Where in the UK do you live?" %}
-
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <form class="form" action="/country-answer" method="post">
-                {{ govukRadios({
-                    idPrefix: "where-do-you-live",
-                    name: "where-do-you-live",
-                    fieldset: {
-                        legend: {
-                            text:  pageTitle,
-                            isPageHeading: true,
-                            classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
-                        }
-                    },
-                    items: [
-                        {
-                            value: "England",
-                            text: "England"
-                        },
-                        {
-                            value: "Scotland",
-                            text: "Scotland"
-                        },
-                        {
-                            value: "Northern Ireland",
-                            text: "Northern Ireland"
-                        },
-                        {
-                            value: "Wales",
-                            text: "Wales"
-                        }
-                    ]
-                }) }}
+    <form class="form" action="/country-answer" method="post">
+        {{ govukRadios({
+            idPrefix: "where-do-you-live",
+            name: "where-do-you-live",
+            fieldset: {
+                legend: {
+                    text:  pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            },
+            items: [
+                {
+                    value: "England",
+                    text: "England"
+                },
+                {
+                    value: "Scotland",
+                    text: "Scotland"
+                },
+                {
+                    value: "Northern Ireland",
+                    text: "Northern Ireland"
+                },
+                {
+                    value: "Wales",
+                    text: "Wales"
+                }
+            ]
+        }) }}
 
-                {{ govukButton({
-                    text: "Continue",
-                    classes: "govuk-!-margin-top-4"
-                }) }}
-            </form>
-        </div>
-    </div>
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
 {% endblock %}

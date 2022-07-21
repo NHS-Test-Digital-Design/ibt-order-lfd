@@ -1,49 +1,44 @@
 {% set pageTitle = "Tell us more about why you need a test" %}
-
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <form action="" class="form" method="post">
-                {{ govukRadios({
-                    idPrefix: "test-reason-health",
-                    name: "test-reason-health",
-                    fieldset: {
-                        legend: {
-                            text: pageTitle,
-                            isPageHeading: true,
-                            classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
-                        }
-                    }, 
-                    items: [
-                        {
-                            value: "covid19-treatments",
-                            text: "You've got a health condition which means you're eligible for COVID-19 treatments"
-                        },
-                        {
-                            value: "admitted-for-procedure",
-                            text: "Your doctor or healthcare professional has told you to get a test because you're being admitted into hospital for a procedure or treatment"
-                        },
-                        {
-                            value: "gp-asked",
-                            text: "You've spoken to your GP or healthcare professional recently and they asked you to get a test"
-                        },
-                        {
-                            divider: "or"
-                        },
-                        {
-                            value: "another",
-                            text: "Another reason"
-                        }
-                    ]
-                }) }}
+    <form action="/reason-health-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-health",
+            name: "test-reason-health",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: "treatments",
+                    text: "You've got a health condition which means you're eligible for COVID-19 treatments"
+                },
+                {
+                    value: "procedure",
+                    text: "Your doctor or healthcare professional has told you to get a test because you're being admitted into hospital for a procedure or treatment"
+                },
+                {
+                    value: "gp",
+                    text: "You've spoken to your GP or healthcare professional recently and they asked you to get a test"
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "another",
+                    text: "Another reason"
+                }
+            ]
+        }) }}
 
-                {{ govukButton({
-                    text: "Continue",
-                    classes: "govuk-!-margin-top-4"
-                }) }}
-            </form>
-        </div>
-    </div>
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
 {% endblock %}

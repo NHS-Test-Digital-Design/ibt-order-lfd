@@ -1,56 +1,51 @@
 {% set pageTitle = "What is your area of work?" %}
-
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <form action="" class="form" method="post">
-                {{ govukRadios({
-                    idPrefix: "test-reason-work",
-                    name: "test-reason-work",
-                    fieldset: {
-                        legend: {
-                            text: pageTitle,
-                            isPageHeading: true,
-                            classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
-                        }
-                    }, 
-                    items: [
-                        {
-                            value: "nhs-patient-facing",
-                            text: "You work for the NHS in a patient-facing role and are taking part in the NHS staff testing programme"
-                        },
-                        {
-                            value: "nhs-symptoms",
-                            text: "You work for the NHS and have COVID-19 symptoms",
-                            hint: {
-                                text: "You have symptoms of COVID-19 or you have recently tested positive and need to take a test to return to work"
-                            }
-                        },
-                        {
-                            value: "ihp-patient-facing",
-                            text: "You work for an NHS-commissioned independent healthcare provider in a patient-facing role"
-                        },
-                        {
-                            value: "adult-social-care",
-                            text: "You work in the adult social care sector "
-                        },
-                        {
-                            divider: "or"
-                        },
-                        {
-                            value: "another",
-                            text: "Another reason"
-                        }
-                    ]
-                }) }}
+    <form action="" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-work",
+            name: "test-reason-work",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: "nhs-patient-facing",
+                    text: "You work for the NHS in a patient-facing role and are taking part in the NHS staff testing programme"
+                },
+                {
+                    value: "nhs-symptoms",
+                    text: "You work for the NHS and have COVID-19 symptoms",
+                    hint: {
+                        text: "You have symptoms of COVID-19 or you have recently tested positive and need to take a test to return to work"
+                    }
+                },
+                {
+                    value: "ihp-patient-facing",
+                    text: "You work for an NHS-commissioned independent healthcare provider in a patient-facing role"
+                },
+                {
+                    value: "adult-social-care",
+                    text: "You work in the adult social care sector "
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "another",
+                    text: "Another reason"
+                }
+            ]
+        }) }}
 
-                {{ govukButton({
-                    text: "Continue",
-                    classes: "govuk-!-margin-top-4"
-                }) }}
-            </form>
-        </div>
-    </div>
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
 {% endblock %}

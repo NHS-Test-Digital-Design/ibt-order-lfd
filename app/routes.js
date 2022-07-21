@@ -5,9 +5,7 @@ const router = express.Router()
 
 // Run this code when a form is submitted to 'country'
 router.post('/country-answer', function (req, res) {
-    // Make a variable and give it the value from 'where-do-you-live'
     var country = req.session.data['where-do-you-live']
-    // Check whether the variable matches a condition
     if (country == "England"){
         res.redirect('order-lateral-flow-kits/condition')
     } else if (country == "Scotland") {
@@ -27,13 +25,38 @@ router.post('/reason-category-answer', function (req, res) {
     } else if (category == "work") {
         res.redirect('order-lateral-flow-kits/test-reason-work')
     } else if (category == "another") {
-        res.redirect('order-lateral-flow-kits/england-exit-page')
+        res.redirect('order-lateral-flow-kits/england/exit-page')
         // if no selection is made send down the health route
     } else {
         res.redirect('order-lateral-flow-kits/test-reason-health')
     }
 })
 
+// test-reason-health.html routing.
+router.post('/reason-health-answer', function (req, res) {
+    var health = req.session.data['test-reason-health']
+    if (health == "treatments"){
+        res.redirect('order-lateral-flow-kits/qualifying-condition')
+    } else if (health == "procedure") {
+        res.redirect('order-lateral-flow-kits/#')
+    } else if (health == "gp") {
+        res.redirect('order-lateral-flow-kits/#')
+    } else if (health == "another") {
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+        // if no selection is made send down the health route
+    } else {
+        res.redirect('order-lateral-flow-kits/qualifying-condition')
+    }
+})
+// qualifying-condition.html routing.
+router.post('/treatment-eligible-answer', function (req, res) {
+    var treatment = req.session.data['treatment-eligible']
+    if (treatment == "no"){
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
 module.exports = router
 
 
