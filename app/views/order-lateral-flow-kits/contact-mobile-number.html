@@ -1,0 +1,64 @@
+{% set pageTitle = "Do you have a mobile number?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="age" class="form" method="post">
+        {% set mobileNumberInputs %}
+            {{ govukInput({
+                id: "mobileNumber",
+                name: "mobileNumber",
+                type: "tel",
+                spellcheck: false,
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Mobile number"
+                }
+            }) }}
+            {{ govukInput({
+                id: "confirmMobileNumber",
+                name: "confirmMobileNumber",
+                type: "tel",
+                spellcheck: false,
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Confirm mobile number "
+                }
+            }) }}
+        {% endset %}
+
+        {{ govukRadios({
+            idPrefix: "do-you-have-mobile",
+            name: "do-you-have-mobile",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            },
+            hint: {
+                html: "<p class='govuk-body'>
+                        We will use this in case we need to contact you about your order.  
+                        </p>"
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes, I have a mobile phone number",
+                    conditional: {
+                        html: mobileNumberInputs
+                    }
+                },
+                {
+                    value: "no",
+                    text: "No, I do not have a mobile phone number "
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

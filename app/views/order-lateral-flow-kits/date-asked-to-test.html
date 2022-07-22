@@ -1,0 +1,43 @@
+{% set pageTitle = "When did your GP or healthcare professional ask you to get a test? " %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/order-lateral-flow-kits/login-choice" class="form" method="post">
+        {{ govukDateInput({
+            id: "date-asked",
+            namePrefix: "date-asked",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: "For example, 19 3 2022"
+            },
+            items: [
+                {
+                    name: "day",
+                    label: "Day",
+                    classes: "govuk-input--width-2"
+                },
+                {
+                    name: "month",
+                    label: "Month",
+                    classes: "govuk-input--width-2"
+                },
+                {
+                    name: "year",
+                    label: "Year",
+                    classes: "govuk-input--width-4"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

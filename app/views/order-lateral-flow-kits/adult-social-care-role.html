@@ -1,0 +1,24 @@
+{% set pageTitle = "Which independent healthcare provider do you work for?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/order-lateral-flow-kits/login-choice" class="form" method="post">
+        {{ govukInput({
+            id: "ihp-name",
+            name: "ihp-name",
+            label: {
+                text: pageTitle,
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            hint: {
+                text: "The name of the NHS-comissioned independent healthcare provider you work for "
+            }
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

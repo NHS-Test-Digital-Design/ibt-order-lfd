@@ -2,7 +2,7 @@
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <form action="" class="form" method="post">
+    <form action="/reason-work-answer" class="form" method="post">
         {{ govukRadios({
             idPrefix: "test-reason-work",
             name: "test-reason-work",
@@ -15,23 +15,26 @@
             }, 
             items: [
                 {
-                    value: "nhs-patient-facing",
+                    value: "nhs",
                     text: "You work for the NHS in a patient-facing role and are taking part in the NHS staff testing programme"
                 },
                 {
-                    value: "nhs-symptoms",
+                    value: "symptoms",
                     text: "You work for the NHS and have COVID-19 symptoms",
                     hint: {
                         text: "You have symptoms of COVID-19 or you have recently tested positive and need to take a test to return to work"
                     }
                 },
                 {
-                    value: "ihp-patient-facing",
+                    value: "ihp",
                     text: "You work for an NHS-commissioned independent healthcare provider in a patient-facing role"
                 },
                 {
-                    value: "adult-social-care",
-                    text: "You work in the adult social care sector "
+                    value: "social",
+                    text: "You work in the adult social care sector",
+                    hint: {
+                        text: "For example, personal assistants, Shared Lives carers, Care Quality Commission (CQC) inspectors or social workers "
+                    }
                 },
                 {
                     divider: "or"

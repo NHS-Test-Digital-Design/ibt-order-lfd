@@ -1,0 +1,67 @@
+{% set pageTitle = "Do you have access to an email address?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/email-answer" class="form" method="post">
+        {% set emailInputs %}
+            {{ govukInput({
+                id: "emailAddress",
+                name: "emailAddress",
+                type: "email",
+                spellcheck: false,
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Email address "
+                }
+            }) }}
+            {{ govukInput({
+                id: "confirmEmailAddress",
+                name: "confirmEmailAddress",
+                type: "email",
+                spellcheck: false,
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Confirm email address "
+                }
+            }) }}
+        {% endset %}
+
+        {{ govukRadios({
+            idPrefix: "do-you-have-email",
+            name: "do-you-have-email",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            },
+            hint: {
+                html: "<p class='govuk-body'>
+                        If you do not have an email address, you can use a family member or friend’s email address. 
+                        </p>
+                        <p class='govuk-body'>
+                        You need to access this email address later on to order the tests. 
+                        </p>"
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes, I have access to an email address",
+                    conditional: {
+                        html: emailInputs
+                    }
+                },
+                {
+                    value: "no",
+                    text: "No, I do not have access to an email address"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

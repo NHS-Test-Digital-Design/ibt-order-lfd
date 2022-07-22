@@ -38,16 +38,34 @@ router.post('/reason-health-answer', function (req, res) {
     if (health == "treatments"){
         res.redirect('order-lateral-flow-kits/qualifying-condition')
     } else if (health == "procedure") {
-        res.redirect('order-lateral-flow-kits/#')
+        res.redirect('order-lateral-flow-kits/hospital-name')
     } else if (health == "gp") {
-        res.redirect('order-lateral-flow-kits/#')
+        res.redirect('order-lateral-flow-kits/date-asked-to-test')
     } else if (health == "another") {
         res.redirect('order-lateral-flow-kits/england/exit-page')
-        // if no selection is made send down the health route
+        // if no selection is made send to qualifying condition
     } else {
         res.redirect('order-lateral-flow-kits/qualifying-condition')
     }
 })
+
+// test-reason-work.html routing.
+router.post('/reason-work-answer', function (req, res) {
+    var work = req.session.data['test-reason-work']
+    if (work == "nhs" || "symptoms"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (work == "ihp") {
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (work == "social") {
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
+    } else if (work == "another") {
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
 // qualifying-condition.html routing.
 router.post('/treatment-eligible-answer', function (req, res) {
     var treatment = req.session.data['treatment-eligible']
@@ -55,6 +73,16 @@ router.post('/treatment-eligible-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/england/exit-page')
     } else {
         res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
+// email.html routing.
+router.post('/email-answer', function (req, res) {
+    var email = req.session.data['do-you-have-email']
+    if (email == "no"){
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+    } else {
+        res.redirect('order-lateral-flow-kits/contact-mobile-number')
     }
 })
 module.exports = router

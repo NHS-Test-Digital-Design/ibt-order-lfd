@@ -1,0 +1,24 @@
+{% set pageTitle = "Which hospital are you being admitted to? " %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/order-lateral-flow-kits/login-choice" class="form" method="post">
+        {{ govukInput({
+            id: "hospital-name",
+            name: "hospital-name",
+            label: {
+                text: pageTitle,
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            hint: {
+                text: "For example, Manchester Royal Infirmary"
+            }
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
