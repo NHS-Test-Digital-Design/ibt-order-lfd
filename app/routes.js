@@ -6,14 +6,16 @@ const router = express.Router()
 // Run this code when a form is submitted to 'country'
 router.post('/country-answer', function (req, res) {
     var country = req.session.data['where-do-you-live']
-    if (country == "England"){
+    if (country == "england"){
         res.redirect('order-lateral-flow-kits/condition')
-    } else if (country == "Scotland") {
+    } else if (country == "scotland") {
         res.redirect('/ineligible')
-    } else if (country == "Northern Ireland"){
+    } else if (country == "ni"){
         res.redirect('/somthing-else')
+    } else if (country == "wales"){
+        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
     } else {
-        res.redirect('/somthing-else-else')
+        res.redirect('order-lateral-flow-kits/condition')
     }
 })
 
