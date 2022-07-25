@@ -1,0 +1,49 @@
+{% set pageTitle = "Sorry, you need email access to order online" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">At the moment, you need access to an email address to order online.</p>
+
+    <p class="govuk-body">It’s OK to use someone else’s.</p>
+
+    <p class="govuk-body">
+        <a href="email" class="govuk-link">Go back and enter an email address</a>
+    </p>
+
+    <h2 class="govuk-heading-m">
+        Do not have an email address?
+    </h2>
+    <p class="govuk-body">Call the contact centre to order rapid lateral flow tests or find out about the other ways to get them.</p>
+
+    <p class="govuk-body">
+        <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link">Get tests if you’re in England </a>
+    </p>
+    <p class="govuk-body">
+        <a href="https://www.gov.scot/publications/coronavirus-covid-19-getting-tested/pages/no-covid-symptoms/" class="govuk-link">Get tests if you’re in Scotland </a>
+    </p>
+    <p class="govuk-body">
+        <a href="https://gov.wales/get-tested-coronavirus-covid-19" class="govuk-link">Get tests if you’re in Wales </a>
+    </p>
+    <p class="govuk-body">
+        <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-testing-and-isolation-advice" class="govuk-link">Get tests if you’re in Northern Ireland </a>
+    </p>
+
+    <h3 class="govuk-heading-s">
+        Order from the contact centre and wait 2 days
+    </h3>
+
+    <p class="govuk-body">
+        Call 119
+        <br>
+        Free from mobiles and landlines
+    </p>
+
+    <p class="govuk-body">
+        Lines open Monday to Friday 8am to 6pm, Saturday and Sunday 9am to 1pm
+    </p>
+
+{% endblock %}
