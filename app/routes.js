@@ -82,7 +82,7 @@ router.post('/treatment-eligible-answer', function (req, res) {
 router.post('/email-answer', function (req, res) {
     var email = req.session.data['do-you-have-email']
     if (email == "no"){
-        res.redirect('order-lateral-flow-kits/england/exit-page')
+        res.redirect('order-lateral-flow-kits/call-us')
     } else {
         res.redirect('order-lateral-flow-kits/contact-mobile-number')
     }
