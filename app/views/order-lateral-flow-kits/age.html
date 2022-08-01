@@ -2,7 +2,7 @@
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <form action="#" class="form" method="post">
+    <form action="address-lookup/post-code" class="form" method="post">
         {{ govukDateInput({
             id: "dob",
             namePrefix: "dob",
@@ -32,6 +32,7 @@
             ]
         }) }}
 
+        {# https://design-system.service.gov.uk/components/button/ #}
         {{ govukButton({
             text: "Continue",
             classes: "govuk-!-margin-top-4"
