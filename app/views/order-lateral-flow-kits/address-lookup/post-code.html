@@ -2,7 +2,34 @@
 {% extends "layout_question.html" %}
 
 {% block content %}
+
+    {# https://design-system.service.gov.uk/styles/typography/#headings #}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
     <form action="select-addess" class="form" method="post">
-        
+        {# https://design-system.service.gov.uk/components/text-input/ #}
+        {{ govukInput({
+            id: "postcode",
+            name: "postcode",
+            classes: "govuk-input--width-10",
+            autocomplete: "postal-code",
+            label: {
+                text: "Postcode",
+                isPageHeading: false
+            }
+        }) }}
+
+        <p class="govuk-body">
+            <a href="manual-entry" class="govuk-link">Enter address manually</a>
+        </p>
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
     </form>
+
 {% endblock %}
