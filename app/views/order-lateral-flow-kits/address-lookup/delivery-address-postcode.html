@@ -1,4 +1,4 @@
-{% set pageTitle = " What is your home address in the UK?" %}
+{% set pageTitle = "What is your delivery address?" %}
 {% extends "layout_question.html" %}
 
 {% block content %}
@@ -7,12 +7,15 @@
     <h1 class="govuk-heading-l">
         {{ pageTitle }}
     </h1>
+    <p class="govuk-body">
+        This is the address where your test kit will be sent. 
+    </p>
 
-    <form action="select-addess" class="form" method="post">
+    <form action="delivery-address-select" class="form" method="post">
         {# https://design-system.service.gov.uk/components/text-input/ #}
         {{ govukInput({
-            id: "postcode",
-            name: "postcode",
+            id: "deliveryPostcode",
+            name: "deliveryPostcode",
             classes: "govuk-input--width-10",
             autocomplete: "postal-code",
             label: {
@@ -22,7 +25,7 @@
         }) }}
 
         <p class="govuk-body">
-            <a href="manual-entry" class="govuk-link">Enter address manually</a>
+            <a href="delivery-address-manual" class="govuk-link">Enter address manually</a>
         </p>
 
         {# https://design-system.service.gov.uk/components/button/ #}

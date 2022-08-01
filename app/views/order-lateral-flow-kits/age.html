@@ -2,7 +2,8 @@
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <form action="address-lookup/post-code" class="form" method="post">
+    <form action="address-lookup/home-address-postcode" class="form" method="post">
+        {# https://design-system.service.gov.uk/components/date-input/ #}
         {{ govukDateInput({
             id: "dob",
             namePrefix: "dob",
