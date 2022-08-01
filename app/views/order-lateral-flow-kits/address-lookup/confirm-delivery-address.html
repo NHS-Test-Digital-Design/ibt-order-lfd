@@ -1,0 +1,49 @@
+{% set pageTitle = "Is your delivery address the same as your home address?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+
+    <form action="#" class="form" method="post">
+
+        {% set titles%}
+            <h1 class="govuk-heading-l">
+                {{ pageTitle }}
+            </h1>
+            <h2 class="govuk-heading-m">
+                {{  data['selectHomeAddress'] or '1 New Street, Your City, NH1 1SD'}}
+            </h2>
+        {% endset %}
+
+        {# https://design-system.service.gov.uk/components/radios/ #}
+        {{ govukRadios({
+            idPrefix: "confirmDeliveryAddress",
+            name: "confirmDeliveryAddress",
+            fieldset: {
+                legend: {
+                    html: titles
+                }
+            },
+            hint: {
+                html: "<p class='govuk-body'>Your delivery address is where your test kit will be sent.</p>"
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes, my delivery address is the same as my home address "
+                },
+                {
+                    value: "no",
+                    text: "No, my delivery address is different to my home address "
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+
+
+{% endblock %}
