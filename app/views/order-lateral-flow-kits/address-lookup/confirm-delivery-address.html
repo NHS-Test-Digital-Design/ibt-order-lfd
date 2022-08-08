@@ -3,14 +3,14 @@
 
 {% block content %}
 
-    <form action="#" class="form" method="post">
+    <form action="/confirm-delivery-address-answer" class="form" method="post">
 
-        {% set titles%}
+        {% set titles %}
             <h1 class="govuk-heading-l">
                 {{ pageTitle }}
             </h1>
             <h2 class="govuk-heading-m">
-                {{  data['selectHomeAddress'] or '1 New Street, Your City, NH1 1SD'}}
+                {{  data['selectHomeAddress'] or '1 New Street, Your City, NH1 1SD' }}
             </h2>
         {% endset %}
 
