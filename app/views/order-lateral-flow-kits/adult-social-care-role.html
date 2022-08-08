@@ -1,18 +1,18 @@
-{% set pageTitle = "Which independent healthcare provider do you work for?" %}
+{% set pageTitle = "What is your job title?" %}
 {% extends "layout_question.html" %}
 
 {% block content %}
     <form action="/order-lateral-flow-kits/login-choice" class="form" method="post">
         {{ govukInput({
-            id: "ihp-name",
-            name: "ihp-name",
+            id: "job-title",
+            name: "job-title",
             label: {
                 text: pageTitle,
                 classes: "govuk-label--l",
                 isPageHeading: true
             },
             hint: {
-                text: "The name of the NHS-comissioned independent healthcare provider you work for "
+                text: "For example, personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker"
             }
         }) }}
 

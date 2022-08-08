@@ -9,9 +9,9 @@ router.post('/country-answer', function (req, res) {
     if (country == "england"){
         res.redirect('order-lateral-flow-kits/condition')
     } else if (country == "scotland") {
-        res.redirect('/ineligible')
+        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
     } else if (country == "ni"){
-        res.redirect('/somthing-else')
+        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
     } else if (country == "wales"){
         res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
     } else {
@@ -54,9 +54,7 @@ router.post('/reason-health-answer', function (req, res) {
 // test-reason-work.html routing.
 router.post('/reason-work-answer', function (req, res) {
     var work = req.session.data['test-reason-work']
-    if (work == "nhs" || "symptoms"){
-        res.redirect('order-lateral-flow-kits/login-choice')
-    } else if (work == "ihp") {
+    if (work == "ihp") {
         res.redirect('order-lateral-flow-kits/healthcare-provider-name')
     } else if (work == "social") {
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
@@ -90,3 +88,13 @@ router.post('/email-answer', function (req, res) {
 module.exports = router
 
 
+// confirm-delivery-address routing.
+router.post('/confirm-delivery-address-answer', function (req, res) {
+    var delivery = req.session.data['confirmDeliveryAddress']
+    if (delivery == "no") {
+        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-postcode')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/check-answers')
+    }
+})
