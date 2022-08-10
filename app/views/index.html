@@ -1,44 +1,184 @@
-
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Home – GOV.UK Prototype Kit
+{% block beforeContent %}
+  {% include "includes/breadcrumbs.html" %}
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Prototype your service using GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
-
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
-
-      <h2 class="govuk-heading-m">About this page</h2>
-
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Tutorials and templates</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
+        Order coronavirus (COVID-19) rapid lateral flow tests
+      </h1>
     </div>
   </div>
+  {# end grid row #}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p>You might be eligible to order a free pack of rapid lateral flow tests to be sent to your home.<p>
+      <p>Use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check if you’re eligible to order rapid lateral flow tests</li>
+        <li>order rapid lateral flow tests to be sent to your home if you’re eligible</li>
+      </ul>
+
+      <div class="govuk-inset-text">
+        You cannot use this service to book tests for travel. <a href="#">Find out what you need to do if you’re travelling abroad</a>.
+      </div>
+
+      <h2 class="govuk-heading-m">Order rapid lateral flow tests online</h2>
+      <p>You can order one pack every 3 days if you’re eligible. A pack contains 7 tests.</p>
+      <p>Your test pack will usually arrive within 3 days. It might take longer during busy periods or public holidays.</p>
+      <h3 class="govuk-heading-s">Ordering for someone else</h3>
+      <p>Anyone in your household can use the tests if they’re eligible. You do not need to order one pack for each person.</p>
+      <p>If you’re ordering for another household, you should:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>do it separately from your household order</li>
+        <li>use their details, including their email address if they have one</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Check your eligibility and order online
+      </h3>
+
+      <p>You’ll need an email address to order rapid lateral flow tests online.</p>
+      <p>
+        {{ govukButton({
+          text: "Start now",
+          href: "/order-lateral-flow-kits/country",
+          isStartButton: true,
+          classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        }) }}
+      </p>
+      
+      <h3 class="govuk-heading-s">
+        After you’ve ordered
+      </h3>
+      <p>You’ll get an email confirming your order. You’ll also get an email or text from Royal Mail that explains how to track your order or change your delivery.</p>
+
+      <h2 class="govuk-heading-m">
+        Get help with your order
+      </h2>
+
+      <p>Call 119 if:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          you’re eligible to order rapid lateral flow tests and you cannot use the online service
+        </li>
+        <li>
+          your test pack does not arrive within 5 days of ordering
+        </li>
+      </ul>
+
+      <p>Call are free from mobiles and landlines</p>
+      <p>Lines are open:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Monday to Friday (including <a href="https://www.gov.uk/bank-holidays" class="govuk-link">bank holidays</a>), 8am to 6pm
+        </li>
+        <li>
+          Saturday and Sunday, 9am to 1pm
+        </li>
+      </ul>
+      <p>119 provides support in 200 languages.</p>
+      <p><a href="https://signvideo.co.uk/nhs119/" class="govuk-link">SignVideo</a>is a free online British Sign Language (BSL) interpreter service for 119.</p>
+
+      <h2 class="govuk-heading-m">
+        Other ways to get rapid lateral flow tests
+      </h2>
+      <p>Find out:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19/" class="govuk-link">where to get rapid lateral flow tests in Scotland</a>
+        </li>
+        <li>
+          <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-testing-and-isolation-advice" class="govuk-link">where to get rapid lateral flow tests in Northern Ireland</a>
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        If you have a problem with your test kit
+      </h2>
+      <p>If anything in your COVID-19 test kit was missing or damaged, or you were harmed using the test kit, <a href="https://www.gov.uk/guidance/coronavirus-covid-19-test-kit-give-feedback-or-report-harm" class="govuk-link">report the problem online</a> or call 119.</p>
+      <p>Do not use the test kit if any part of it is missing or damaged.</p>
+
+      <h2 class="govuk-heading-m">
+        After you’ve taken your test
+      </h2>
+      <p><a href="https://draft-origin.publishing.service.gov.uk/report-covid19-result" class="govuk-link"></a> Report rapid lateral flow test results</a> the day you or someone in your household takes the test, no matter what the result is.</p>
+      <p>Find out what you need to do:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/test-results/" class="govuk-link">if your result is positive in England</a>
+        </li>
+        <li>
+          <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19/" class="govuk-link">if your result is positive in Scotland</a>
+        </li>
+        <li>
+          <a href="https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19" class="govuk-link">if your result is positive in Wales</a>
+        </li>
+        <li>
+          <a href="if your result is positive in Northern Ireland" class="govuk-link">if your result is positive in Northern Ireland</a>
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        If you need medical advice about your symptoms
+      </h2>
+      <p>Get help at:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/" class="govuk-link">England: NHS 111 online COVID-19 service</a>
+        </li>
+        <li>
+          <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19" class="govuk-link">Scotland: NHS inform</a>
+        </li>
+        <li>
+          <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19" class="govuk-link">Wales: NHS 111 Wales</a>
+        </li>
+        <li>
+          Northern Ireland: get advice from a GP or GP out-of-hours service
+        </li>
+      </ul>
+
+      <p>Call 999 if you feel very unwell or think there’s something seriously wrong.</p>
+
+      <h2 class="govuk-heading-m">
+        How rapid lateral flow tests work
+      </h2>
+
+      <p>The test usually involves taking a sample from your throat and nose, or from your nose only, using a swab.</p>
+
+      <p>You get a result in 10 to 30 minutes depending on the type of rapid lateral flow test you’ve taken. The test kit instructions will tell you the time you need to wait before reading your result.</p>
+      
+    </div>
+    {# end column two thirds #}
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Report a COVID-19 rapid lateral flow test result
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Get a PCR test to check if you have coronavirus (COVID-19)
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+    {# end column one third #}
+  </div>
+  {# end grid row #}
 
 {% endblock %}
+{# end content black #}
