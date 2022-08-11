@@ -61,7 +61,7 @@ router.post('/reason-work-answer', function (req, res) {
     } else if (work == "nhsNoSymptoms") {
         res.redirect('order-lateral-flow-kits/test-reason-work-more')
     } else if (work == "socialpNoSymptoms") {
-        res.redirect('order-lateral-flow-kits/employer-told-you')
+        res.redirect('order-lateral-flow-kits/return-to-work')
     } else if (work == "social") {
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
     } else if (work == "another") {
@@ -123,10 +123,10 @@ router.post('/confirm-delivery-address-answer', function (req, res) {
     }
 })
 
-// employer-told-you routing.
-router.post('/employer-told-answer', function (req, res) {
-    var employerTold = req.session.data['employer-told']
-    if (employerTold == "no") {
+// return-to-work routing.
+router.post('/return-to-work-answer', function (req, res) {
+    var returnWork = req.session.data['return-to-work']
+    if (returnWork == "no") {
         res.redirect('order-lateral-flow-kits/england/exit-page-test-pause')
         // if no selection is made send to login choice
     } else {
