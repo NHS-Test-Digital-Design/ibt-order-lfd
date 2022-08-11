@@ -1,11 +1,11 @@
-{% set pageTitle = "Has your employer told you to get a test before returning to work because you have had COVID-19?" %}
+{% set pageTitle = "Do you need to get a test before returning to work because you have had COVID-19?" %}
 {% extends "layout_question.html" %}
 
 {% block content %}
-    <form action="/employer-told-answer" class="form" method="post">
+    <form action="/return-to-work-answer" class="form" method="post">
         {{ govukRadios({
-            idPrefix: "employer-told",
-            name: "employer-told",
+            idPrefix: "return-to-work",
+            name: "return-to-work",
             fieldset: {
                 legend: {
                     text: pageTitle,
