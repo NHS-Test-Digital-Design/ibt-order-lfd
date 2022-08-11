@@ -1,0 +1,40 @@
+{% set pageTitle = "You are not eligible for free COVID-19 tests" %}
+{% extends "layout_question.html" %}
+
+{# *** ENGLAND - ENGLAND - ENGLAND *** #}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    {{ govukWarningText({
+        text: "Do not phone for a test. You will not be able to get one this way.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    <p class="govuk-body">
+        Based on what you've told us, you cannot get a free NHS test. If you still want to take a test, you can buy one from some pharmacies and retailers, in person or online.
+    </p>
+    
+
+    <h2 class="govuk-heading-m">
+        NHS and independent healthcare provider workers
+    </h2>
+
+    <p class="govuk-body">
+        <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link">Check the latest testing guidance in England.</a>.
+    </p>
+
+    <h2 class="govuk-heading-m">
+        Adult social care workers
+    </h2>
+
+    <p class="govuk-body">
+        <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-testing-for-adult-social-care-settings" class="govuk-link">Check the latest testing guidance for adult social care services</a>.
+    </p>
+
+    
+{% endblock %}
+
+{# *** ENGLAND - ENGLAND - ENGLAND *** #}

@@ -1,0 +1,33 @@
+{% set pageTitle = "Has your employer told you to get a test before returning to work because you have had COVID-19?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/employer-told-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "employer-told",
+            name: "employer-told",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l  govuk-!-margin-bottom-6"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

@@ -1,3 +1,14 @@
+{# grab the answer from the symptoms Q on condition.html to set the valuee for radio's to route correctly #}
+{% if data ['do-you-have-symptoms'] == "no" %}
+    {% set nhs = "nhsNoSymptoms"%}
+    {% set ihp = "ihpNoSymptoms"%}
+    {% set social = "socialpNoSymptoms"%}
+{% else %}
+    {% set nhs = "nhs"%}
+    {% set ihp = "ihp"%}
+    {% set social = "social"%}
+{% endif %}
+
 {% set pageTitle = "What is your area of work?" %}
 {% extends "layout_question.html" %}
 
@@ -15,16 +26,15 @@
             }, 
             items: [
                 {
-                    value: "nhs",
+                    value: nhs,
                     text: "You work for the NHS in a patient-facing role"
                 },
-                
                 {
-                    value: "ihp",
+                    value: ihp,
                     text: "You work for an independent healthcare provider commissioned by the NHS in a patient-facing role"
                 },
                 {
-                    value: "social",
+                    value: social,
                     text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker"
                 },
                 {

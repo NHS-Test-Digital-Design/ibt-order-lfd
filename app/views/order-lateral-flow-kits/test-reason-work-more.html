@@ -1,0 +1,56 @@
+{# grab the answer from the test-reason-work Q on test-reason-work.html to set the value for radio's to route correctly #}
+{% if data ['test-reason-work'] == "ihpNoSymptoms" %}
+    {% set covid = "ihpCovid"%}
+    {% set withHr = "ihpWithHr"%}
+    {% set areHr = "ihpAreHr"%}
+{% else %}
+    {% set covid = "covid"%}
+    {% set withHr = "withHr"%}
+    {% set areHr = "areHr"%}
+{% endif %}
+
+
+{% set pageTitle = "Tell us more about why you need a test?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/reason-work-more-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-work-more",
+            name: "test-reason-work-more",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: covid,
+                    text: "You've been off work with COVID-19 and you need a test to return to work"
+                },
+                {
+                    value: withHr,
+                    text: "You work with people who are at high risk of getting seriously ill from COVID-19 and your employer told you to get a test"
+                },
+                {
+                    value: areHr,
+                    text: "You're at high risk of getting seriously ill from COVID-19 and your employer told you to get a test"
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "another",
+                    text: "None of these"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
