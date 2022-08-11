@@ -10,7 +10,7 @@
 {% endif %}
 
 
-{% set pageTitle = "Tell us more about why you need a test?" %}
+{% set pageTitle = "Tell us more about why you need a test" %}
 {% extends "layout_question.html" %}
 
 {% block content %}
@@ -48,9 +48,14 @@
             ]
         }) }}
 
+        <p class="govuk-body">
+            Find out <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/people-at-higher-risk/who-is-at-high-risk-from-coronavirus/" class="govuk-link" rel="noreferrer noopener" target="_blank">who is at high risk of getting seriously ill from COVID-19 (opens in new tab)</a>.
+        </p>
+
         {{ govukButton({
             text: "Continue",
             classes: "govuk-!-margin-top-4"
         }) }}
     </form>
 {% endblock %}
+
