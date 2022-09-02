@@ -1,0 +1,33 @@
+{% set pageTitle = "Do you need a test before you return to work because you have had COVID-19?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/return-to-work-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "return-to-work",
+            name: "return-to-work",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l  govuk-!-margin-bottom-6"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

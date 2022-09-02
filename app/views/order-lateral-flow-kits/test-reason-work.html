@@ -1,3 +1,14 @@
+{# grab the answer from the symptoms Q on condition.html to set the valuee for radio's to route correctly #}
+{% if data ['do-you-have-symptoms'] == "no" %}
+    {% set nhs = "nhsNoSymptoms"%}
+    {% set ihp = "ihpNoSymptoms"%}
+    {% set social = "socialpNoSymptoms"%}
+{% else %}
+    {% set nhs = "nhs"%}
+    {% set ihp = "ihp"%}
+    {% set social = "social"%}
+{% endif %}
+
 {% set pageTitle = "What is your area of work?" %}
 {% extends "layout_question.html" %}
 
@@ -15,33 +26,23 @@
             }, 
             items: [
                 {
-                    value: "nhs",
-                    text: "You work for the NHS in a patient-facing role and are taking part in the NHS staff testing programme"
+                    value: nhs,
+                    text: "You work for the NHS in a patient-facing role"
                 },
                 {
-                    value: "symptoms",
-                    text: "You work for the NHS and have COVID-19 symptoms",
-                    hint: {
-                        text: "You have symptoms of COVID-19 or you have recently tested positive and need to take a test to return to work"
-                    }
+                    value: ihp,
+                    text: "You work with NHS patients for an independent healthcare provider"
                 },
                 {
-                    value: "ihp",
-                    text: "You work for an NHS-commissioned independent healthcare provider in a patient-facing role"
-                },
-                {
-                    value: "social",
-                    text: "You work in the adult social care sector",
-                    hint: {
-                        text: "For example, personal assistants, Shared Lives carers, Care Quality Commission (CQC) inspectors or social workers "
-                    }
+                    value: social,
+                    text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker"
                 },
                 {
                     divider: "or"
                 },
                 {
                     value: "another",
-                    text: "Another reason"
+                    text: "None of these"
                 }
             ]
         }) }}

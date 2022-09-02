@@ -56,6 +56,12 @@ router.post('/reason-work-answer', function (req, res) {
     var work = req.session.data['test-reason-work']
     if (work == "ihp") {
         res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (work == "ihpNoSymptoms") {
+        res.redirect('order-lateral-flow-kits/test-reason-work-more')
+    } else if (work == "nhsNoSymptoms") {
+        res.redirect('order-lateral-flow-kits/test-reason-work-more')
+    } else if (work == "socialpNoSymptoms") {
+        res.redirect('order-lateral-flow-kits/return-to-work')
     } else if (work == "social") {
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
     } else if (work == "another") {
@@ -65,6 +71,24 @@ router.post('/reason-work-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
+
+// test-reason-work-more.html routing.
+router.post('/reason-work-more-answer', function (req, res) {
+    var workMore = req.session.data['test-reason-work-more']
+    if (workMore == "another") {
+        res.redirect('order-lateral-flow-kits/england/exit-page-test-pause')
+    } else if (workMore == "ihpCovid") {
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (workMore == "ihpWithHr") {
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (workMore == "ihpAreHr") {
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
 
 // qualifying-condition.html routing.
 router.post('/treatment-eligible-answer', function (req, res) {
@@ -96,5 +120,16 @@ router.post('/confirm-delivery-address-answer', function (req, res) {
         // if no selection is made send to login choice
     } else {
         res.redirect('order-lateral-flow-kits/check-answers')
+    }
+})
+
+// return-to-work routing.
+router.post('/return-to-work-answer', function (req, res) {
+    var returnWork = req.session.data['return-to-work']
+    if (returnWork == "no") {
+        res.redirect('order-lateral-flow-kits/england/exit-page-test-pause')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
     }
 })
