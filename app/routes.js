@@ -109,7 +109,6 @@ router.post('/email-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/contact-mobile-number')
     }
 })
-module.exports = router
 
 
 // confirm-delivery-address routing.
@@ -133,3 +132,5 @@ router.post('/return-to-work-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
     }
 })
+
+module.exports = router
