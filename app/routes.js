@@ -133,4 +133,21 @@ router.post('/return-to-work-answer', function (req, res) {
     }
 })
 
+// return-to-work routing.
+router.post('/delivery-postcode-answer', function (req, res) {
+    var delPostcode = req.session.data['delPostcode']
+    if (delPostcode == "EN91 AND") {
+        res.redirect('order-lateral-flow-kits/condition')
+    } else if (delPostcode == "SC07 LND") {
+        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
+    } else if (delPostcode == "NO57 LND") {
+        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
+    } else if (delPostcode == "WA1 ELS"){
+        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/condition')
+    }
+})
+
 module.exports = router
