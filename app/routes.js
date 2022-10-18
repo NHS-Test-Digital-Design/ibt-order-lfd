@@ -3,7 +3,29 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-// Run this code when a form is submitted to 'country'
+// country 'post-code routing.
+router.post('/delivery-postcode-answer', function (req, res) {
+    var delPostcode = req.session.data['delPostcode']
+    if (delPostcode == "EN91 AND") {
+        res.redirect('order-lateral-flow-kits/condition')
+    } else if (delPostcode == "SC07 LND") {
+        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
+    } else if (delPostcode == "NO57 LND") {
+        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
+    } else if (delPostcode == "WA1 ELS"){
+        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
+    } else if (delPostcode == "SAME DA"){
+        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
+    } else if (delPostcode == "CHANGE DA"){
+        res.redirect('order-lateral-flow-kits/address-lookup/da-switch-confirm')
+        // if no selection is made send to scotland
+    } else {
+        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
+    }
+})
+
+
+// country radio buttons fall back. 
 router.post('/country-answer', function (req, res) {
     var country = req.session.data['where-do-you-live']
     if (country == "england"){
@@ -111,11 +133,11 @@ router.post('/email-answer', function (req, res) {
 })
 
 
-// confirm-delivery-address routing.
-router.post('/confirm-delivery-address-answer', function (req, res) {
-    var delivery = req.session.data['confirmDeliveryAddress']
-    if (delivery == "no") {
-        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-postcode')
+// confirm-home-address routing.
+router.post('/confirm-home-address-answer', function (req, res) {
+    var home = req.session.data['confirmHomeAddress']
+    if (home == "no") {
+        res.redirect('order-lateral-flow-kits/address-lookup/home-address-postcode')
         // if no selection is made send to login choice
     } else {
         res.redirect('order-lateral-flow-kits/check-answers')
@@ -133,21 +155,6 @@ router.post('/return-to-work-answer', function (req, res) {
     }
 })
 
-// return-to-work routing.
-router.post('/delivery-postcode-answer', function (req, res) {
-    var delPostcode = req.session.data['delPostcode']
-    if (delPostcode == "EN91 AND") {
-        res.redirect('order-lateral-flow-kits/condition')
-    } else if (delPostcode == "SC07 LND") {
-        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
-    } else if (delPostcode == "NO57 LND") {
-        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
-    } else if (delPostcode == "WA1 ELS"){
-        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
-        // if no selection is made send to login choice
-    } else {
-        res.redirect('order-lateral-flow-kits/condition')
-    }
-})
+
 
 module.exports = router

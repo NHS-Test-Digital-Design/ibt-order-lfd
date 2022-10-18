@@ -25,7 +25,7 @@
                 actions: {
                     items: [
                         {
-                            href: "delivery-address-postcode",
+                            href: "../country",
                             text: "Change",
                             visuallyHiddenText: "Postcode"
                         }
@@ -35,20 +35,19 @@
         ]
     }) }}
 
-    <form action="check-answers" class="form" method="post">
+    <form action="confirm-home-address" class="form" method="post">
         
         {# https://design-system.service.gov.uk/components/select/ #}
         {{ govukSelect({
-            id: "selectHomeAddress",
-            name: "selectHomeAddress",
+            id: "selectDelAddress",
+            name: "selectDelAddress",
             label: {
                 text: "Select an address"
             },
             items: [
                 {
                     value: "found",
-                    text: "5 addresses found",
-                    selected: true
+                    text: "5 addresses found"
                 },
                 {
                     value: "1 New Street, Your City, " + code,

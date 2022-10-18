@@ -1,6 +1,8 @@
 {% set pageTitle = "Enter your delivery address" %}
 {% extends "layout_question.html" %}
 
+{% set code = data['delPostcode'] or 'NH48 1SD' %}
+
 {% block content %}
 
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
@@ -11,7 +13,7 @@
         This is the address where your test kit will be sent.
     </p>
 
-    <form action="../check-answers" class="form" method="post">
+    <form action="confirm-home-address" class="form" method="post">
         {# https://design-system.service.gov.uk/components/text-input/ #}
         {{ govukInput({
             id: "deliveryAddressLine1",
@@ -38,13 +40,36 @@
                 text: "Town or city"
             }
         }) }}
-        {{ govukInput({
+        {# {{ govukInput({
             id: "deliveryAddressPostcode",
             name: "deliveryAddressPostcode",
             classes: "govuk-input--width-10",
             label: {
                 text: "Postcode"
             }
+        }) }} #}
+
+        {# https://design-system.service.gov.uk/components/summary-list/ #}
+        {{ govukSummaryList({
+            rows: [
+                {
+                    key: {
+                        text: "Postcode"
+                    },
+                    value: {
+                        text:  code
+                    },
+                    actions: {
+                        items: [
+                            {
+                                href: "delivery-address-postcode",
+                                text: "Change",
+                                visuallyHiddenText: "Postcode"
+                            }
+                        ]
+                    }
+                }
+            ]
         }) }}
 
         {# https://design-system.service.gov.uk/components/button/ #}
