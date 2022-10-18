@@ -1,8 +1,16 @@
 {% set pageTitle = "What is your date of birth?" %}
 {% extends "layout_question.html" %}
 
+{% set linkurl %}
+    {% if data['where-do-you-live']%}
+    address-lookup/delivery-address-postcode
+    {% else %}
+    address-lookup/delivery-address-select
+    {%endif%}
+{% endset %}
+
 {% block content %}
-    <form action="address-lookup/delivery-address-select" class="form" method="post">
+    <form action={{linkurl}} class="form" method="post">
         {# https://design-system.service.gov.uk/components/date-input/ #}
         {{ govukDateInput({
             id: "dob",

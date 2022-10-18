@@ -1,6 +1,6 @@
 {% set pageTitle = "Where in the UK do you live?" %}
 {% extends "layout_question.html" %}
-
+{% set existingPastcode = data['delPostcode'] %}
 {% block content %}
 
     <h1 class="govuk-heading-l">
@@ -11,13 +11,14 @@
         We're asking this question because there are different rules for who can get free tests. These rules change depending on the country in the delivery address.
     </p>
 
-    <form action="/delivery-postcode-answer" class="form" method="post">
+    <form action="/delivery-postcode-change-answer" class="form" method="post">
         {# https://design-system.service.gov.uk/components/text-input/ #}
         {{ govukInput({
-            id: "delPostcode",
-            name: "delPostcode",
+            id: "delPostcodeNew",
+            name: "delPostcodeNew",
             classes: "govuk-input--width-10",
             autocomplete: "postal-code",
+            value: existingPastcode,
             label: {
                 text: "Postcode",
                 isPageHeading: false
@@ -25,7 +26,7 @@
         }) }}
 
         <p class="govuk-body">
-            <a href="country-choice" class="govuk-link">I don't know the postcode of the delivery address</a>
+            <a href="dcountry-choice" class="govuk-link">I don't know the postcode of the delivery address</a>
         </p>
 
         {# https://design-system.service.gov.uk/components/button/ #}

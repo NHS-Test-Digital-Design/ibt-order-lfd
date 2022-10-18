@@ -14,15 +14,34 @@ router.post('/delivery-postcode-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
     } else if (delPostcode == "WA1 ELS"){
         res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
-    } else if (delPostcode == "SAME DA"){
-        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
-    } else if (delPostcode == "CHANGE DA"){
-        res.redirect('order-lateral-flow-kits/address-lookup/da-switch-confirm')
         // if no selection is made send to scotland
     } else {
         res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
     }
 })
+
+// country post-code change routing.
+router.post('/delivery-postcode-change-answer', function (req, res) {
+    var delPostcodeNew = req.session.data['delPostcode']
+    if (delPostcodeNew == "SAME DA") {
+        res.redirect('order-lateral-flow-kits/condition')
+    } else {
+        res.redirect('order-lateral-flow-kits/address-lookup/da-switch-confirm')
+    }
+})
+
+// country post-code change routing.
+router.post('/postcode-change-confirmation-answer', function (req, res) {
+    var PostcodeChange = req.session.data['daChangeConfirm']
+    if (PostcodeChange == "no") {
+        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
+    } else {
+        res.redirect('order-lateral-flow-kits/condition')
+    }
+})
+
+
+
 
 
 // country radio buttons fall back. 
