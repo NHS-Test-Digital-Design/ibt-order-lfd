@@ -7,144 +7,142 @@
         {{ pageTitle }}
     </h1>
 
-    <div class="govuk-!-margin-bottom-9">
-        <h2 class="govuk-heading-m">
-            Reason for test
-        </h2>
-        {{ govukSummaryList({
-            rows: [
-                {
-                    key: {
-                        text: "Reason"
-                    },
-                    value: {
-                        text: "Eligible for COVID-19 treatments"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change reason for test"
-                            }
-                        ]
-                    }
+    <h2 class="govuk-heading-m">
+        Reason for test
+    </h2>
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Reason"
+                },
+                value: {
+                    text: "Eligible for COVID-19 treatments"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change reason for test"
+                        }
+                    ]
                 }
-            ]
-        }) }}
-    </div>
+            }
+        ]
+    }) }}
 
-    <div class="govuk-!-margin-bottom-9">
-        <h2 class="govuk-heading-m">
-            Personal details
-        </h2>
-        {{ govukSummaryList({
-            rows: [
-                {
-                    key: {
-                        text: "Name"
-                    },
-                    value: {
-                        text: "Alex Kidd"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change name"
-                            }
-                        ]
-                    }
+    <h2 class="govuk-heading-m">
+        Personal details
+    </h2>
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Name"
                 },
-                {
-                    key: {
-                        text: "Date of birth"
-                    },
-                    value: {
-                        text: "6 December 2000"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change date of birth"
-                            }
-                        ]
-                    }
+                value: {
+                    text: "Alex Kidd"
                 },
-                {
-                    key: {
-                        text: "Contact details"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>your@email.com</p><p class='govuk-body'>07766 554321</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your contact details"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Country of residance"
-                    },
-                    value: {
-                        text: "England"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your country of residance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Home address"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your home address"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Delivery address"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your delivery address"
-                            }
-                        ]
-                    }
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change name"
+                        }
+                    ]
                 }
-            ]
-        }) }}
-    </div>
+            },
+            {
+                key: {
+                    text: "Date of birth"
+                },
+                value: {
+                    text: "6 December 2000"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change date of birth"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Contact details"
+                },
+                value: {
+                    html: "<p class='govuk-body'>your@email.com</p><p class='govuk-body'>07766 554321</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your contact details"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Country of residance"
+                },
+                value: {
+                    text: "England"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your country of residance"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Home address"
+                },
+                value: {
+                    html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your home address"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Delivery address"
+                },
+                value: {
+                    html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your delivery address"
+                        }
+                    ]
+                }
+            }
+        ]
+    }) }}
 
     <h2 class="govuk-heading-m">
         Declaration
