@@ -1,14 +1,14 @@
-{% set pageTitle = "Where in the UK do you live?" %}
+{% set pageTitle = "Enter the postcode of the delivery address" %}
 {% extends "layout_question.html" %}
 {% set existingPastcode = data['delPostcode'] %}
-{% block content %}
 
+{% block content %}
     <h1 class="govuk-heading-l">
-        Enter the postcode of the delivery addess
+        {{ pageTitle }}
     </h1>
 
     <p class="govuk-body">
-        We're asking this question because there are different rules for who can get free tests. These rules change depending on the country in the delivery address.
+        We're asking this question because the rules for who can get free tests depend on the country in the delivery address.
     </p>
 
     <form action="/delivery-postcode-change-answer" class="form" method="post">

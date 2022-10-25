@@ -40,15 +40,7 @@
                 text: "Town or city"
             }
         }) }}
-        {# {{ govukInput({
-            id: "deliveryAddressPostcode",
-            name: "deliveryAddressPostcode",
-            classes: "govuk-input--width-10",
-            label: {
-                text: "Postcode"
-            }
-        }) }} #}
-
+        
         {# https://design-system.service.gov.uk/components/summary-list/ #}
         {{ govukSummaryList({
             rows: [
@@ -62,7 +54,7 @@
                     actions: {
                         items: [
                             {
-                                href: "delivery-address-postcode",
+                                href: "../country-postcode-change",
                                 text: "Change",
                                 visuallyHiddenText: "Postcode"
                             }
