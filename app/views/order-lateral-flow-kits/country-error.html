@@ -3,6 +3,16 @@
 
 {% block content %}
 
+    {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+            {
+                text: "Enter a UK postcode",
+                href: "#delPostcode"
+            }
+        ]
+    }) }}
+
     <h1 class="govuk-heading-l">
         {{ pageTitle }}
     </h1>
@@ -21,6 +31,9 @@
             label: {
                 text: "Postcode",
                 isPageHeading: false
+            },
+            errorMessage: {
+                text: "Enter a UK postcode"
             }
         }) }}
 
