@@ -1,11 +1,8 @@
-{% set pageTitle = "Are you sure you want to change delivery country?" %}
-{% extends "layout_question.html" %}
-
 {% set oldPostcode %}
     {% if data['delPostcode'] %}
         {{ data['delPostcode'] }}
     {% else %}
-        NH48 1SD 
+        SC0T 1ND 
     {% endif %}
 {% endset %}
 
@@ -13,48 +10,71 @@
     {% if data['delPostcodeNew'] %}
         {{ data['delPostcodeNew'] }}
     {% else %}
-        C019 NHS    
+        ENG 1ND 
     {% endif %}
 {% endset %}
 
+{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in England" %}
+{% extends "layout_question.html" %}
+
+
 {% block content %}
 
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
 
-    <form action="/postcode-change-confirmation-answer" class="form" method="post">
-
-    {{ govukRadios({
-        idPrefix: "daChangeConfirm",
-        name: "daChangeConfirm",
-        fieldset: {
-            legend: {
-                text: pageTitle,
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-            }
-        },
-        hint: {
-            html: "If you continue with this change, we'll need to check if you're eligible for tests in <strong>England</strong>."
-        },
-        items: [
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
             {
-                value: "yes",
-                html: "Yes, change my delivery postcode to <strong>" + newPostcode + "</strong>"
+                key: {
+                    text: "Previous postcode"
+                },
+                value: {
+                    text: oldPostcode
+                }
             },
             {
-                value: "no",
-                html: "No, Keep my delivery post code as <strong>" + oldPostcode + "</strong>"
+                key: {
+                    text: "New postcode"
+                },
+                value: {
+                    text: newPostcode
+                }
             }
         ]
     }) }}
 
-    {# https://design-system.service.gov.uk/components/button/ #}
-    {{ govukButton({
-        text: "Confirm and continue",
-        classes: "govuk-!-margin-top-4"
-    }) }}
+    <form action="/postcode-change-confirmation-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "daChangeConfirm",
+            name: "daChangeConfirm",
+            classes: "govuk-radios--inline",
+            fieldset: {
+                legend: {
+                    text: "Are you sure you want to change the delivery postcode?",
+                    isPageHeading: false
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    html: "Yes"
+                },
+                {
+                    value: "no",
+                    html: "No"
+                }
+            ]
+        }) }}
 
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Confirm and continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
     </form>
-
 {% endblock %}
 
 <p class="govuk-body">

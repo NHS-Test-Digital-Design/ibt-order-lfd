@@ -1,0 +1,81 @@
+{% set pageTitle = "Order PCR test kits Prototype" %}
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">
+    {{ pageTitle }}
+</h1>
+
+
+
+<h2 class="govuk-heading-m">
+    Useful links
+</h2>
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+    <li>
+        <a href="https://github.com/NHS-Test-Digital-Design/ibt-order-lfd" class="govuk-link">Github repo home</a>
+    </li>
+    <li>
+        <a href="https://github.com/NHS-Test-Digital-Design/ibt-order-lfd/pulls" class="govuk-link">Github pull requests</a>
+    </li>
+    <li>
+        <a href="https://miro.com/app/board/uXjVPXHQi18=/?moveToWidget=3458764533303368309&cot=14" class="govuk-link">Miro design board</a>
+    </li>
+</ul>
+
+
+
+{{ govukTable({
+    caption: "Flow screens",
+    firstCellIsHeader: true,
+    head: [
+        {
+            text: "Screen"
+        },
+        {
+            text: "File"
+        },
+        {
+            text: "Status"
+        }
+    ],
+    rows: [
+        [
+            {
+                html: "<a href='../../' class='govuk-link'>Start screen</a>"
+            },
+            {
+                text: "views/index.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "live",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../country' class='govuk-link'>Delivery postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/country.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--orange"
+                })
+            }
+        ]
+    ]
+}) }}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% set pageTitle = "We do not recognise the postcode XX99 X99" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        If you think you entered the postcode incorrectly you can try and <a href="../country" class="govuk-link">enter the postcode again</a>.
+    </p>
+
+    <p class="govuk-body">
+        Or <a href="../country-choice" class="govuk-link">tell us the country instead</a>.
+    </p>
+    
+{% endblock %}

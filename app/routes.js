@@ -6,14 +6,16 @@ const router = express.Router()
 // country 'post-code routing.
 router.post('/delivery-postcode-answer', function (req, res) {
     var delPostcode = req.session.data['delPostcode']
-    if (delPostcode == "EN91 AND") {
+    if (delPostcode == "ENG 1ND") {
         res.redirect('order-lateral-flow-kits/condition')
-    } else if (delPostcode == "SC07 LND") {
+    } else if (delPostcode == "SC07 1ND") {
         res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
-    } else if (delPostcode == "NO57 LND") {
+    } else if (delPostcode == "N0R 1ND") {
         res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
-    } else if (delPostcode == "WA1 ELS"){
+    } else if (delPostcode == "WA1 3LS"){
         res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
+    } else if (delPostcode == "ERR 0R1"){
+        res.redirect('order-lateral-flow-kits/error/postcode-error')
         // if no selection is made send to scotland
     } else {
         res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
@@ -39,10 +41,6 @@ router.post('/postcode-change-confirmation-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/condition')
     }
 })
-
-
-
-
 
 // country radio buttons fall back. 
 router.post('/country-answer', function (req, res) {
