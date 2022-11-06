@@ -1,6 +1,5 @@
-{% set pageTitle = "What is your delivery address?" %}
+{% set pageTitle = "What is the delivery address?" %}
 {% extends "layout_question.html" %}
-
 
 {% set code %}
     {% if data['delPostcodeNew']%}
@@ -12,19 +11,13 @@
     {% endif %}
 {% endset%}
 
-
 {% set code = data['delPostcode'] or 'NH48 1SD' %}
-
-
 
 {% block content %}
 
     <h1 class="govuk-heading-l  govuk-!-margin-bottom-8">
         {{ pageTitle }}
     </h1>
-    <p class="govuk-body">
-        This is the address where your test kit will be sent. 
-    </p>
 
     {# https://design-system.service.gov.uk/components/summary-list/ #}
     {{ govukSummaryList({

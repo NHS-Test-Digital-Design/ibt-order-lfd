@@ -1,6 +1,5 @@
-{% set pageTitle = "Order PCR test kits Prototype" %}
+{% set pageTitle = "Order LFD test kits Prototype" %}
 {% extends "layout.html" %}
-
 
 {% block content %}
 
@@ -52,26 +51,147 @@
             {
                 text:
                 govukTag({
-                    text: "live",
+                    text: "Unchanged",
                     classes: "govuk-tag--blue"
                 })
             }
         ],
         [
             {
-                html: "<a href='../country' class='govuk-link'>Delivery postcode</a>"
+                html: "<a href='../postcode' class='govuk-link'>Delivery postcode</a>"
             },
             {
-                text: "order-lateral-flow-kits/country.html"
+                text: "order-lateral-flow-kits/postcode.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../postcode' class='govuk-link'>Delivery country choice</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/country-choice.html"
             },
             {
                 text:
                 govukTag({
                     text: "Updated",
-                    classes: "govuk-tag--orange"
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/unable-to-deliver' class='govuk-link'>Can not deliver to postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/unable-to-deliver.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/tech-error' class='govuk-link'>Technical problem</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/tech-error.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/delivery-address-select' class='govuk-link'>Delivery address select</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/delivery-address-selectr.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/delivery-address-manual' class='govuk-link'>Delivery address manual - w/postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/delivery-address-manual.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/confirm-home-address' class='govuk-link'>Confirm home address</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/confirm-home-address.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/da-switch-confirm' class='govuk-link'>Confirm country switch postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/da-switch-address.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/da-switch-country-confirm' class='govuk-link'>Confirm country switch</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/da-switch-country-confirm.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
                 })
             }
         ]
+
     ]
 }) }}
 
