@@ -1,0 +1,31 @@
+{% set pageTitle = "There is a problem" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        Due to a technical error we are unable to complete this action. Please go back and try again
+    </p>
+
+    {{ govukButton({
+        text: "Try again",
+        href: "javascript:window.history.go(-1);" 
+    }) }}
+
+    <p class="govuk-body">
+        If the issue continues, call the contact centre on 119 (free from mobiles and landlines).
+    </p>
+
+    <p>Lines are open:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>
+            Monday to Friday (including <a href="https://www.gov.uk/bank-holidays" class="govuk-link">bank holidays</a>), 8am to 6pm
+        </li>
+        <li>
+            Saturday and Sunday, 9am to 1pm
+        </li>
+    </ul>
+{% endblock %}

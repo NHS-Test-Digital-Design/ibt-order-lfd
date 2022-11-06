@@ -1,0 +1,44 @@
+{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in England" %}
+{% extends "layout_question.html" %}
+
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        You've changed your delivery country to <strong>England</strong>
+    </p>
+
+    <form action="/postcode-change-confirmation-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "daChangeConfirm",
+            name: "daChangeConfirm",
+            classes: "govuk-radios--inline",
+            fieldset: {
+                legend: {
+                    text: "Are you sure you want to change the delivery country?",
+                    isPageHeading: false
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    html: "Yes"
+                },
+                {
+                    value: "no",
+                    html: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Confirm and continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

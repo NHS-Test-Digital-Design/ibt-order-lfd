@@ -1,0 +1,27 @@
+{% set pageTitle = "Sorry, we can not deliver lateral flow test sto your postcode" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        There are seperate coronavirus testing services for Isle of Man, Guernsey and Jersey.
+    </p>
+
+    <ul class="govuk-list">
+        <li>
+            <a href="#" class="govuk-link">Get a lateral flow thets if you're in the Isle of Man</a>
+        </li>
+        <li>
+            <a href="#" class="govuk-link">Get a lateral flow thets if you're in Guernsey</a>
+        </li>
+        <li>
+            <a href="#" class="govuk-link">Get a lateral flow thets if you're in Jersey</a>
+        </li>
+    </ul>
+
+
+{% endblock %}
