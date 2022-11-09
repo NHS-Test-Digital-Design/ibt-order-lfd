@@ -7,7 +7,90 @@
     {{ pageTitle }}
 </h1>
 
+<h2 class="govuk-heading-m">
+    Postcodes for routing.
+</h2>
+<p class="govuk-body">
+    Use the following postcodes on the <a href='../postcode' class='govuk-link'>Delivery postcode</a> screen to follow desired route. If no postcode is entered to Scottish route will be followed.
+</p>
 
+{{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+        {
+            text: "Postcode"
+        },
+        {
+            text: "Destination"
+        }
+    ],
+    rows: [
+        [
+            {
+                text: "ENG 1ND"
+            },
+            {
+                text: "English journey"
+            }
+        ],
+        [
+            {
+                text: "SC07 1ND"
+            },
+            {
+                text: "Scottish journey - Default"
+            }
+        ],
+        [
+            {
+                text: "N0R 1ND"
+            },
+            {
+                text: "Northern Ireland Journey"
+            }
+        ],
+        [
+            {
+                text: "WA1 3LS"
+            },
+            {
+                text: "Wales Journey"
+            }
+        ],
+        [
+            {
+                text: "ERR 0R1"
+            },
+            {
+                text: "Error - Address not found"
+            }
+        ],
+        [
+            {
+                text: "API ERR"
+            },
+            {
+                text: "Error - Technical problem"
+            }
+        ],
+        [
+            {
+                text: "NO DEL"
+            },
+            {
+                text: "Error - Unable to deliver to this address"
+            }
+        ],
+        [
+            {
+                text: "ERROR"
+            },
+            {
+                text: "Error - invalid postcode format"
+            }
+        ]
+    ]
+}) }}
 
 <h2 class="govuk-heading-m">
     Useful links
@@ -73,7 +156,7 @@
         ],
         [
             {
-                html: "<a href='../postcode' class='govuk-link'>Delivery country choice</a>"
+                html: "<a href='../country-choice' class='govuk-link'>Delivery country choice</a>"
             },
             {
                 text: "order-lateral-flow-kits/country-choice.html"

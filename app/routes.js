@@ -15,7 +15,13 @@ router.post('/delivery-postcode-answer', function (req, res) {
     } else if (delPostcode == "WA1 3LS"){
         res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
     } else if (delPostcode == "ERR 0R1"){
-        res.redirect('order-lateral-flow-kits/error/postcode-error')
+        res.redirect('order-lateral-flow-kits/country-choice')
+    } else if (delPostcode == "API ERR"){
+        res.redirect('order-lateral-flow-kits/error/tech-error')
+    } else if (delPostcode == "NO DEL"){
+        res.redirect('order-lateral-flow-kits/error/unable-to-deliver')
+    } else if (delPostcode == "ERROR"){
+        res.redirect('order-lateral-flow-kits/error/postcode-format-error')
         // if no selection is made send to scotland
     } else {
         res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
@@ -32,7 +38,7 @@ router.post('/delivery-postcode-change-answer', function (req, res) {
     }
 })
 
-// country post-code change routing.
+// country DA change confirm routing.
 router.post('/postcode-change-confirmation-answer', function (req, res) {
     var PostcodeChange = req.session.data['daChangeConfirm']
     if (PostcodeChange == "no") {
