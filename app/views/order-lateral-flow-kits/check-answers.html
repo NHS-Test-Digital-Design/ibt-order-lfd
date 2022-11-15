@@ -1,34 +1,33 @@
 {% set pageTitle = "Check your answers" %}
 {% extends "layout_question.html" %}
 
-{% set birthMonth %}
-    {% if data['dob-month'] == "1" %}
+{% set monthConvert %}
+    {% if data['dob-month'] or data['date-asked-month'] == "1" %}
         January
-    {% elif data['dob-month'] == "2" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "2" %}
         February
-    {% elif data['dob-month'] == "3" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "3" %}
         March
-    {% elif data['dob-month'] == "4" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "4" %}
         April
-    {% elif data['dob-month'] == "5" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "5" %}
         May
-    {% elif data['dob-month'] == "6" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "6" %}
         June
-    {% elif data['dob-month'] == "7" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "7" %}
         July
-    {% elif data['dob-month'] == "8" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "8" %}
         August
-    {% elif data['dob-month'] == "9" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "9" %}
         September
-    {% elif data['dob-month'] == "10" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "10" %}
         October
-    {% elif data['dob-month'] == "11" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "11" %}
         November
-    {% elif data['dob-month'] == "12" %}
+    {% elif data['dob-month'] or data['date-asked-month'] == "12" %}
         December
     {% endif %}
 {% endset %}
-
 
 {% set name %}
     {% if data['first-name'] %}
@@ -36,15 +35,78 @@
         {% else %}
         Alex Kidd
     {% endif %}
-{% endset%}
+{% endset %}
 
 {% set birthDate %}
     {% if data['dob-day'] %}
-        {{ data['dob-day'] + birthMonth + data['dob-year'] }}
+        {{ data['dob-day'] + monthConvert + data['dob-year'] }}
         {% else %}
         4 March 1980
     {% endif %}
-{% endset%}
+{% endset %}
+
+{% set testReason %}
+    {% if data ['treatment-eligible'] == "yes" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-health'] == "procedure" %}
+        Being admitted into {{ data['hospital-name'] or 'Manchester Royal Infirmary' }} for a procedure or treatment
+    {% elif data ['test-reason-health'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test 
+    {% elif data ['test-reason-work'] == "nhs" %}
+        You work for the NHS in a patient-facing role
+    {% elif data ['test-reason-work'] == "ihp" %}
+        You work with NHS patients for {{ data['ihp-name'] or 'an independent healthcare provider '}}
+    {% elif data ['test-reason-work'] == "social" %}
+        You work in adult social care as a {{ data['job-title'] or 'social worker'}}
+    {% else %}
+        Eligible for COVID-19 treatments
+    {% endif %}
+{% endset %}
+
+{% set email %}
+    {% if data['confirmEmailAddress'] %}
+        {{ data['confirmEmailAddress'] }}
+        {% else %}
+        your@email-is.cool
+    {% endif %}
+{% endset %}
+
+{% set phoneNumber %}
+    {% if data['confirmMobileNumber'] %}
+        {{ data['confirmMobileNumber'] }}
+        {% else %}
+        07766 554321
+    {% endif %}
+{% endset %}
+
+{% set contactDetails %}
+    <p class="govuk-body">
+        {{ email }}
+    </p>
+    <p class="govuk-body">
+        {{ phoneNumber }}
+    </p>
+{% endset %}
+
+{% set delAddress %}
+    {% if data['selectDelAddress'] %}
+        {{ data['selectDelAddress']}} 
+    {% elif data['deliveryAddressLine1'] %}
+        {{ data['deliveryAddressLine1']}}, {{ data['deliveryAddressLine2']}}, {{ data['deliveryAddressTown']}}, {{ data['delPostcode' or 'deliveryPostcode' or 'delPostcodeNew']}}
+    {% endif %}
+{% endset %}
+
+{% set homeAddress %}
+    {% if data['confirmHomeAddress'] == "yes" %}
+        {{ delAddress }}
+    {% elif data['confirmHomeAddress'] == "no" and data['selectDelAddress']%}
+        {{ data['selectDelAddress']}} 
+    {% elif data['confirmHomeAddress'] == "no" and data['addressLine1'] %}
+        {{ data['addressLine1']}}, {{ data['addressLine2']}}, {{ data['addressTown']}}, {{ data['addressPostcode']}},
+    {% endif %}
+{% endset %}
+
+
 
 {% block content %}
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
@@ -52,31 +114,35 @@
         {{ pageTitle }}
     </h1>
 
-    <h2 class="govuk-heading-m">
-        Reason for test
-    </h2>
-    {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
-        rows: [
-            {
-                key: {
-                    text: "Reason"
-                },
-                value: {
-                    text: "Eligible for COVID-19 treatments"
-                },
-                actions: {
-                    items: [
-                        {
-                            href: "#",
-                            text: "Change",
-                            visuallyHiddenText: "change reason for test"
-                        }
-                    ]
+    {% if data ['delPostcode'] == "ENG 1ND"%}
+        <h2 class="govuk-heading-m">
+            Reason for test
+        </h2>
+
+        {# https://design-system.service.gov.uk/components/summary-list/ #}
+        {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
+            rows: [
+                {
+                    key: {
+                        text: "Reason"
+                    },
+                    value: {
+                        text: testReason
+                    },
+                    actions: {
+                        items: [
+                            {
+                                href: "#",
+                                text: "Change",
+                                visuallyHiddenText: "change reason for test"
+                            }
+                        ]
+                    }
                 }
-            }
-        ]
-    }) }}
+            ]
+        }) }}
+    {% endif %}
 
     <h2 class="govuk-heading-m">
         Personal details
@@ -123,7 +189,7 @@
                     text: "Contact details"
                 },
                 value: {
-                    html: "<p class='govuk-body'>your@email.com</p><p class='govuk-body'>07766 554321</p>"
+                    html: contactDetails
                 },
                 actions: {
                     items: [
@@ -137,27 +203,10 @@
             },
             {
                 key: {
-                    text: "Country of residence"
-                },
-                value: {
-                    text: "England"
-                },
-                actions: {
-                    items: [
-                        {
-                            href: "#",
-                            text: "Change",
-                            visuallyHiddenText: "change your country of residence"
-                        }
-                    ]
-                }
-            },
-            {
-                key: {
                     text: "Home address"
                 },
                 value: {
-                    html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
+                    html: "<p class='govuk-body'>" + homeAddress + "</p>"
                 },
                 actions: {
                     items: [
@@ -174,7 +223,7 @@
                     text: "Delivery address"
                 },
                 value: {
-                    html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
+                    html: "<p class='govuk-body'>" + delAddress + "</p>"
                 },
                 actions: {
                     items: [

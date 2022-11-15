@@ -4,14 +4,15 @@
 {% set code %}
     {% if data['delPostcodeNew']%}
         {{ data['delPostcodeNew'] }}
-        {% elif data['delPostcode']%}
+    {% elif data['deliveryPostcode'] and data['delPostcode'] %}
+        {{ data['deliveryPostcode'] }}
+    {% elif data['delPostcode']%}
         {{ data['delPostcode'] }}
-        {% else %}
+    {% else %}
         NH48 1SD
     {% endif %}
 {% endset%}
 
-{% set code = data['delPostcode'] or 'NH48 1SD' %}
 
 {% block content %}
 

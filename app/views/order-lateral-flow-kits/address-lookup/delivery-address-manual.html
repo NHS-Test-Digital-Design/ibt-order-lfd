@@ -37,29 +37,45 @@
                 text: "Town or city"
             }
         }) }}
+
+        {% if data['where-do-you-live']%}
         
-        {# https://design-system.service.gov.uk/components/summary-list/ #}
-        {{ govukSummaryList({
-            rows: [
-                {
-                    key: {
-                        text: "Postcode"
-                    },
-                    value: {
-                        text:  code
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "../country-postcode-change",
-                                text: "Change",
-                                visuallyHiddenText: "Postcode"
-                            }
-                        ]
+            {{ govukInput({
+                label: {
+                    text: "Postcode"
+                },
+                classes: "govuk-input--width-10",
+                id: "deliveryAddressPostcode",
+                name: "deliveryAddressPostcode",
+                autocomplete: "postal-code"
+            }) }}
+
+        {% else %}
+
+            {# https://design-system.service.gov.uk/components/summary-list/ #}
+            {{ govukSummaryList({
+                rows: [
+                    {
+                        key: {
+                            text: "Postcode"
+                        },
+                        value: {
+                            text:  code
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "../country-postcode-change",
+                                    text: "Change",
+                                    visuallyHiddenText: "Postcode"
+                                }
+                            ]
+                        }
                     }
-                }
-            ]
-        }) }}
+                ]
+            }) }}
+
+        {%endif%}
 
         {# https://design-system.service.gov.uk/components/button/ #}
         {{ govukButton({
