@@ -7,10 +7,6 @@
         {{ pageTitle }}
     </h1>
 
-    <p class="govuk-body">
-        We're asking this question because the rules for who can get free tests depend on the country in the delivery address.
-    </p>
-
     <form action="/delivery-postcode-answer" class="form" method="post">
         {# https://design-system.service.gov.uk/components/text-input/ #}
         {{ govukInput({
@@ -23,10 +19,6 @@
                 isPageHeading: false
             }
         }) }}
-
-        {# <p class="govuk-body">
-            <a href="country-choice" class="govuk-link">Tell us the delivery country instead</a>
-        </p> #}
 
         {# https://design-system.service.gov.uk/components/button/ #}
         {{ govukButton({
