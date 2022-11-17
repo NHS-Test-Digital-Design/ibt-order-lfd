@@ -1,0 +1,85 @@
+{% set pageTitle = "Coronavirus (COVID-19) symptoms" %}
+{% extends "layout_question.html" %}
+
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p>Symptoms of COVID-19 can include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>
+            a high temperature
+        </li>
+        <li>
+            a new, continuous cough
+        </li>
+        <li>
+            a loss or change to your sense of smell or taste
+        </li>
+        <li>
+            shortness of breath
+        </li>
+        <li>
+            feeling tired or exhausted
+        </li>
+        <li>
+            an aching body
+        </li>
+        <li>
+            a headache
+        </li>
+        <li>
+            a sore throat
+        </li>
+        <li>
+            a blocked or runny nose
+        </li>
+        <li>
+            loss of appetite
+        </li>
+        <li>
+            diarrhoea
+        </li>
+        <li>
+            feeling sick or being sick
+        </li>
+    </ul>
+
+    <p>
+        <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/symptoms/" class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
+    </p>
+
+    <form class="form" action="england/eligibility" method="post">
+        {{ govukRadios({
+            idPrefix: "do-you-have-symptoms",
+            name: "do-you-have-symptoms",
+            classes: "govuk-!-margin-top-5",
+            fieldset: {
+                legend: {
+                    text: "Do you have any COVID-19 symptoms?",
+                    isPageHeading: false,
+                    classes: "govuk-label govuk-label--s"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
