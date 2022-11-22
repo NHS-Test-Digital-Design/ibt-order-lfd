@@ -79,6 +79,25 @@ router.post('/reason-category-answer', function (req, res) {
     }
 })
 
+// ni/test-reason-category-ni.html routing.
+router.post('/reason-category-answer-ni', function (req, res) {
+    var catni = req.session.data['test-reason-category-ni']
+    if (catni == "treatments"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (catni == "work") {
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
+    } else if (catni == "carer") {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (catni == "gp") {
+        res.redirect('order-lateral-flow-kits/date-asked-to-test')
+    } else if (catni == "none") {
+        res.redirect('order-lateral-flow-kits/ni/exit-page-ni')
+        // if no selection is made send down the health route
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
 // test-reason-health.html routing.
 router.post('/reason-health-answer', function (req, res) {
     var health = req.session.data['test-reason-health']
