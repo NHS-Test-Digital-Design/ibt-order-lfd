@@ -79,6 +79,16 @@ router.post('/reason-category-answer', function (req, res) {
     }
 })
 
+// scotland/test-reason-category-scotland.html routing.
+router.post('/reason-category-answer-scotland', function (req, res) {
+    var catscot = req.session.data['test-reason-category-scotland']
+    if (catscot == "another"){
+        res.redirect('order-lateral-flow-kits/scotland/exit-page-scotland')
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
 // ni/test-reason-category-ni.html routing.
 router.post('/reason-category-answer-ni', function (req, res) {
     var catni = req.session.data['test-reason-category-ni']
