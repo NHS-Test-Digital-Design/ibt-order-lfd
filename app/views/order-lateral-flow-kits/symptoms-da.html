@@ -1,6 +1,20 @@
 {% set pageTitle = "Coronavirus (COVID-19) symptoms" %}
 {% extends "layout_question.html" %}
 
+{# set the symptoms link url dependent on the country. Defaults to Scotland if no country selected #}
+{% set symptomsUrl %}
+    {% if data['delPostcode'] == "SC07 1ND" %}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% elif data['delPostcode'] == "N0R 1ND" %}
+        https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19
+    {% elif data['delPostcode'] == "WA1 3LS" %}
+        https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19
+    {% else %}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% endif %}
+{% endset %}
+
+
 {% block content %}
     <h1 class="govuk-heading-l">
         {{ pageTitle }}
@@ -48,7 +62,7 @@
     </ul>
 
     <p>
-        <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/symptoms/" class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
+        <a href={{symptomsUrl}} class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
     </p>
 
     <form class="form" action="#" method="post">
