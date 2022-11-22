@@ -98,6 +98,21 @@ router.post('/reason-category-answer-ni', function (req, res) {
     }
 })
 
+// wales/test-reason-category-wales.html routing.
+router.post('/reason-category-answer-wales', function (req, res) {
+    var catwales = req.session.data['test-reason-category-wales']
+    if (catwales == "treatments"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (catwales == "gp") {
+        res.redirect('order-lateral-flow-kits/date-asked-to-test')
+    } else if (catwales == "none") {
+        res.redirect('order-lateral-flow-kits/wales/exit-page-wales')
+        // if no selection is made send down the health route
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
 // test-reason-health.html routing.
 router.post('/reason-health-answer', function (req, res) {
     var health = req.session.data['test-reason-health']
