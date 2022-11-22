@@ -38,13 +38,14 @@ router.post('/delivery-postcode-change-answer', function (req, res) {
     }
 })
 
-// country DA change confirm routing.
-router.post('/postcode-change-confirmation-answer', function (req, res) {
+
+// country DA change confirm routing - Change to Scotland.
+router.post('/postcode-da-change-confirm', function (req, res) {
     var PostcodeChange = req.session.data['daChangeConfirm']
     if (PostcodeChange == "no") {
         res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
     } else {
-        res.redirect('order-lateral-flow-kits/condition')
+        res.redirect('order-lateral-flow-kits/symptoms-da')
     }
 })
 

@@ -14,7 +14,23 @@
     {% endif %}
 {% endset %}
 
-{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in England" %}
+{% set country %}
+    {% if data['delPostcodeNew'] == "ENG 1ND" %}
+        England
+    {% elif data['delPostcodeNew'] == "SC07 1ND"%}
+        Scotland
+    {% elif data['delPostcodeNew'] == "N0R 1ND"%}
+        Northern Ireland
+    {% elif data['delPostcodeNew'] == "WA1 3LS"%}
+        Wales
+    {% else %}
+        Neverland
+    {% endif %}
+{% endset %}
+
+
+
+{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in" + country %}
 {% extends "layout_question.html" %}
 
 
@@ -46,7 +62,7 @@
         ]
     }) }}
 
-    <form action="/postcode-change-confirmation-answer" class="form" method="post">
+    <form action="/postcode-da-change-confirm" class="form" method="post">
         {{ govukRadios({
             idPrefix: "daChangeConfirm",
             name: "daChangeConfirm",

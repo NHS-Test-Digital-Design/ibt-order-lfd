@@ -3,7 +3,7 @@
 
 {% set address %}
     {% if data['deliveryAddressLine1'] %}
-        {{ data['deliveryAddressLine1'] }},  {{ data['deliveryAddressLine2'] }}, {{ data['deliveryAddressTown'] }}
+        {{ data['deliveryAddressLine1'] }},  {{ data['deliveryAddressLine2'] }}, {{ data['deliveryAddressTown'] }}, {{ data['deliveryAddressPostcode'] }}
     {% elif data['selectDelAddress'] %}
         {{ data['selectDelAddress'] }}
     {% else %}

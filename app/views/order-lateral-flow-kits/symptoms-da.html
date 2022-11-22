@@ -3,7 +3,7 @@
 
 {# set the symptoms link url dependent on the country. Defaults to Scotland if no country selected #}
 {% set symptomsUrl %}
-    {% if data['delPostcode'] == "SC07 1ND" %}
+    {% if data['delPostcode'] == "SC07 1ND"%}
         https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
     {% elif data['delPostcode'] == "N0R 1ND" %}
         https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19
@@ -11,6 +11,18 @@
         https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19
     {% else %}
         https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% endif %}
+{% endset %}
+
+{% set NewSymptomsUrl %}
+    {% if data['delPostcodeNew'] == "SC07 1ND"%}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% elif data['delPostcodeNew'] == "N0R 1ND" %}
+        https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19
+    {% elif data['delPostcodeNew'] == "WA1 3LS" %}
+        https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19
+    {% else %}
+        {{ symptomsUrl }}
     {% endif %}
 {% endset %}
 
@@ -26,6 +38,19 @@
     {% endif %}
 {% endset %}
 
+{% set newDaUrl %}
+    {% if data['delPostcodeNew'] == "SC07 1ND" %}
+        scotland/eligibility-scotland
+    {% elif data['delPostcodeNew'] == "N0R 1ND" %}
+        ni/eligibility-ni
+    {% elif data['delPostcodeNew'] == "WA1 3LS" %}
+        wales/eligibility-wales
+    {% else %}
+        {{ daUrl }} 
+    {% endif %}
+{% endset %}
+
+
 
 {% block content %}
     <h1 class="govuk-heading-l">
@@ -36,34 +61,31 @@
 
     <ul class="govuk-list govuk-list--bullet">
         <li>
-            a high temperature
+            continuous cough
         </li>
         <li>
-            a new, continuous cough
+            a high temperature, fever or chills
         </li>
         <li>
-            a loss or change to your sense of smell or taste
+            loss of or change in, your normal sense of taste or smell
         </li>
         <li>
             shortness of breath
         </li>
         <li>
-            feeling tired or exhausted
+            unexplained tiredness, lack of energy
         </li>
         <li>
-            an aching body
+            muscle aches or pains that are not due to exercise
         </li>
         <li>
-            a headache
+            not wanting to eat or not feeling hungry
         </li>
         <li>
-            a sore throat
+            headache that is unusual or longer lasting than usual
         </li>
         <li>
-            a blocked or runny nose
-        </li>
-        <li>
-            loss of appetite
+            sore throat, stuffy or runny nose
         </li>
         <li>
             diarrhoea
@@ -74,10 +96,10 @@
     </ul>
 
     <p>
-        <a href={{symptomsUrl}} class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
+        <a href={{NewSymptomsUrl}} class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
     </p>
 
-    <form class="form" action={{daUrl}} method="post">
+    <form class="form" action={{newDaUrl}} method="post">
         {{ govukRadios({
             idPrefix: "symptoms-da",
             name: "symptoms-da",
