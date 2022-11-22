@@ -9,11 +9,11 @@ router.post('/delivery-postcode-answer', function (req, res) {
     if (delPostcode == "ENG 1ND") {
         res.redirect('order-lateral-flow-kits/condition')
     } else if (delPostcode == "SC07 1ND") {
-        res.redirect('order-lateral-flow-kits/scotland/symptoms-scotland')
+        res.redirect('order-lateral-flow-kits/symptoms-da')
     } else if (delPostcode == "N0R 1ND") {
-        res.redirect('order-lateral-flow-kits/ni/symptoms-ni')
+        res.redirect('order-lateral-flow-kits/symptoms-da')
     } else if (delPostcode == "WA1 3LS"){
-        res.redirect('order-lateral-flow-kits/wales/symptoms-wales')
+        res.redirect('order-lateral-flow-kits/symptoms-da')
     } else if (delPostcode == "ERR 0R1"){
         res.redirect('order-lateral-flow-kits/country-choice')
     } else if (delPostcode == "API ERR"){
@@ -24,7 +24,7 @@ router.post('/delivery-postcode-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/error/postcode-format-error')
         // if no selection is made send to scotland
     } else {
-        res.redirect('order-lateral-flow-kits/scotland/symptoms-scotland')
+        res.redirect('order-lateral-flow-kits/symptoms-da')
     }
 })
 
