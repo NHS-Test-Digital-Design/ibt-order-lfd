@@ -1,6 +1,15 @@
 {% set pageTitle = "Enter the postcode of the delivery address" %}
 {% extends "layout_question.html" %}
-{% set existingPastcode = data['delPostcode'] %}
+
+
+
+{% set existingPastcode%}
+    {% if data['delPostcodeNew'] %}
+        {{data['delPostcodeNew']}}
+    {% else %}
+        {{data['delPostcode']}}
+    {% endif %}    
+{% endset %}
 
 {% block content %}
     <h1 class="govuk-heading-l">

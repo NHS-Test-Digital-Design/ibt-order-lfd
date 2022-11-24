@@ -223,6 +223,20 @@ router.post('/return-to-work-answer', function (req, res) {
     }
 })
 
+// delivery address postcode if country select fall back has been used.
+router.post('/delivery-address-postcode-answer', function (req, res) {
+    var postcodeFallback = req.session.data['deliveryPostcode']
+    var country = req.session.data['where-do-you-live']
+    if (postcodeFallback == "ENG 1ND" && country == "england" || 
+        postcodeFallback == "SC07 1ND" && country == "scotland" ||
+        postcodeFallback == "N0R 1ND" && country == "ni" ||
+        postcodeFallback == "WA1 3LS" && country == "wales" ) {
+        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
+        // if no selection is made send to login choice
+    } else {
+        res.redirect('order-lateral-flow-kits/address-lookup/da-switch-country-confirm')
+    }
+})
 
 
 module.exports = router

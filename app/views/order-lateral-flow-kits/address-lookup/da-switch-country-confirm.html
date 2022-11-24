@@ -1,4 +1,19 @@
-{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in England" %}
+{% set newCountry %}
+    {% if data['deliveryPostcode'] == "ENG 1ND" %}
+        England
+    {% elif data['deliveryPostcode'] == "SC07 1ND"%}
+        Scotland
+    {% elif data['deliveryPostcode'] == "N0R 1ND"%}
+        Northern Ireland
+    {% elif data['deliveryPostcode'] == "WA1 3LS"%}
+        Wales
+    {% else %}
+        England
+    {% endif %}
+{% endset %}
+
+
+{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in" + newCountry %}
 {% extends "layout_question.html" %}
 
 
@@ -9,7 +24,7 @@
     </h1>
 
     <p class="govuk-body">
-        You've changed your delivery country to <strong>England</strong>
+        You've changed your delivery country to <strong>{{ newCountry }}</strong>
     </p>
 
     <form action="/postcode-change-confirmation-answer" class="form" method="post">

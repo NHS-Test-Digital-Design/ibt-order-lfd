@@ -1,7 +1,15 @@
 {% set pageTitle = "Enter your delivery address" %}
 {% extends "layout_question.html" %}
 
-{% set code = data['delPostcode'] or 'NH48 1SD' %}
+{% set code %}
+    {% if data['delPostcodeNew'] %}
+        {{data['delPostcodeNew']}}
+    {% elif data['delPostcode']%}
+        {{data['delPostcode']}}
+    {% else %}
+        NH48 1SD
+    {% endif %}    
+{% endset %}
 
 {% block content %}
 
