@@ -49,6 +49,21 @@ router.post('/postcode-da-change-confirm', function (req, res) {
     }
 })
 
+// country DA change confirm routing da-switch-country-confirm.html 
+router.post('/postcode-change-confirmation-answer', function (req, res) {
+    var countryChange = req.session.data['countryChangeConfirm']
+    var setCountry = req.session.data['deliveryPostcode']
+    if (countryChange == "yes" && setCountry == "ENG 1ND") {
+        res.redirect('order-lateral-flow-kits/condition')
+    } else if (countryChange == "yes" && setCountry == "SC07 1ND" || 
+            countryChange == "yes" && setCountry == "N0R 1ND" || 
+            countryChange == "yes" && setCountry == "WA1 3LS") {
+        res.redirect('order-lateral-flow-kits/symptoms-da')
+    } else {
+        res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-postcode')
+    }
+})
+
 // country radio buttons fall back. 
 router.post('/country-answer', function (req, res) {
     var country = req.session.data['where-do-you-live']
