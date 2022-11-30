@@ -58,8 +58,22 @@
         You work with NHS patients for {{ data['ihp-name'] or 'an independent healthcare provider '}}
     {% elif data ['test-reason-work'] == "social" %}
         You work in adult social care as a {{ data['job-title'] or 'social worker'}}
-    {% else %}
+    {% elif data ['test-reason-category-ni'] == "treatments" %}
         Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-ni'] == "work" %}
+        You work in health or social care as a {{ data['job-title'] or 'social worker'}} and you have COVID-19 symptoms
+    {% elif data ['test-reason-category-ni'] == "carer" %}
+        You work as a carer who provides close personal care for someone who is at higher risk if they contract COVID-19 and you have COVID-19 symptoms
+    {% elif data ['test-reason-category-ni'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test
+    {% elif data ['test-reason-category-scotland'] == "treatments" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-wales'] == "treatments" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-wales'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test
+    {% else %}
+        Eligible for COVID-19 treatments 
     {% endif %}
 {% endset %}
 
@@ -93,6 +107,8 @@
         {{ data['selectDelAddress']}} 
     {% elif data['deliveryAddressLine1'] %}
         {{ data['deliveryAddressLine1']}}, {{ data['deliveryAddressLine2']}}, {{ data['deliveryAddressTown']}}, {{ data['delPostcode' or 'deliveryPostcode' or 'delPostcodeNew']}}
+    {% else %}
+        101, Default Road, Standard City, NHS A17
     {% endif %}
 {% endset %}
 
@@ -102,7 +118,9 @@
     {% elif data['confirmHomeAddress'] == "no" and data['selectDelAddress']%}
         {{ data['selectDelAddress']}} 
     {% elif data['confirmHomeAddress'] == "no" and data['addressLine1'] %}
-        {{ data['addressLine1']}}, {{ data['addressLine2']}}, {{ data['addressTown']}}, {{ data['addressPostcode']}},
+        {{ data['addressLine1']}}, {{ data['addressLine2']}}, {{ data['addressTown']}}, {{ data['addressPostcode']}}
+    {% else %}
+        101, Default Road, Standard City, NHS A17
     {% endif %}
 {% endset %}
 
@@ -114,35 +132,33 @@
         {{ pageTitle }}
     </h1>
 
-    {% if data ['delPostcode'] == "ENG 1ND"%}
-        <h2 class="govuk-heading-m">
-            Reason for test
-        </h2>
+    <h2 class="govuk-heading-m">
+        Reason for test
+    </h2>
 
-        {# https://design-system.service.gov.uk/components/summary-list/ #}
-        {{ govukSummaryList({
-            classes: "govuk-!-margin-bottom-9",
-            rows: [
-                {
-                    key: {
-                        text: "Reason"
-                    },
-                    value: {
-                        text: testReason
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change reason for test"
-                            }
-                        ]
-                    }
+    {# https://design-system.service.gov.uk/components/summary-list/ #}
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Reason"
+                },
+                value: {
+                    text: testReason
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change reason for test"
+                        }
+                    ]
                 }
-            ]
-        }) }}
-    {% endif %}
+            }
+        ]
+    }) }}
 
     <h2 class="govuk-heading-m">
         Personal details
