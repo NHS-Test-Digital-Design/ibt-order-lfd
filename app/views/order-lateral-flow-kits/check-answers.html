@@ -124,8 +124,6 @@
     {% endif %}
 {% endset %}
 
-
-
 {% block content %}
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
     <h1 class="govuk-heading-l">
@@ -273,11 +271,11 @@
     </ul>
     
 
-        {# https://design-system.service.gov.uk/components/button/ #}
-        {{ govukButton({
-            text: "Agree and place order",
-            classes: "govuk-!-margin-top-4",
-            href: "confirmation"
-        }) }}
+    {# https://design-system.service.gov.uk/components/button/ #}
+    {{ govukButton({
+        text: "Agree and place order",
+        classes: "govuk-!-margin-top-4",
+        href: "confirmation"
+    }) }}
 
 {% endblock %}
