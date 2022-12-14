@@ -1,4 +1,4 @@
-{% set pageTitle = "Check if you are eligible to order rapid lateral flow tests " %}
+{% set pageTitle = "Most people in Northern Ireland can no longer get free rapid lateral flow tests" %}
 {% extends "layout_question.html" %}
 
 {# *** NI - NI - NI *** #}
@@ -8,17 +8,17 @@
         {{ pageTitle }}
     </h1>
 
-    <p class="govuk-body">In Northern Ireland, free COVID-19 testing is no longer available for most people. You can only order rapid lateral flow tests if:</p>
+    <p class="govuk-body">You may be able to get free tests if:</p>
 
     <ul class="govuk-list govuk-list--bullet">
         <li>
             you may be eligible for <a href="https://www.nidirect.gov.uk/articles/treatments-coronavirus-covid-19" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>
         </li>
         <li>
-            you are working or visiting others in high risk or vulnerable settings, such as care homes and hospital environments
+            you work in health or social care and you have COVID-19 symptoms
         </li>
         <li>
-            you are a carer who provides close personal care for someone who is at higher risk if they contract COVID-19 
+            you're a carer who provides close personal care for<a href="https://www.nidirect.gov.uk/articles/treatments-coronavirus-covid-19" class="govuk-link" rel="noreferrer noopener" target="_blank"> someone who is at higher risk if they contract COVID-19 (opens in new tab)</a> and you have COVID-19 symptoms
         </li>
         <li>
             your GP or a healthcare professional asks you to take a test
@@ -26,35 +26,15 @@
     </ul>
 
     <p class="govuk-body">
-        <a href="https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19" class="govuk-link" target="_blank" rel="noopener noreferrer">Find out what to do if you think you have COVID-19 (opens in new tab)</a>.
-        If you're worried, or your symptoms get worse, contact your GP or your GP out-of-hours service. In an emergency dial 999. 
+        Find out <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-testing-and-stay-home-advice" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free rapid lateral flow tests (opens in new tab)</a>.
     </p>
 
-    <h2 class="govuk-heading-m">
-        If you are not eligible for tests
-    </h2>
+    {{ govukButton({
+        text: "Continue",
+        href: "test-reason-category-ni",
+        classes: "govuk-!-margin-top-4"
+    }) }}
 
-    <p class="govuk-body">
-        <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-how-stay-safe-and-help-prevent-spread" class="govuk-link">Find out how to stay safe and help prevent the spread of COVID-19</a>.
-    </p>
-
-    <h2 class="govuk-heading-m">
-        Disclaimer
-    </h2>
-
-    <p class="govuk-body">
-        By selecting 'Confirm and continue', I confirm I am eligible to order rapid lateral flow tests. 
-    </p>
-
-    <div class="govuk-button-group">
-        {{ govukButton({
-            text: "Confirm and continue",
-            href: "../login-choice",
-            classes: "govuk-!-margin-top-4"
-        }) }}
-
-        <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-how-stay-safe-and-help-prevent-spread" class="govuk-link">I am not eligible </a>
-    </div>
 {% endblock %}
 
 {# *** NI - NI - NI *** #}

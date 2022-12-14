@@ -1,8 +1,16 @@
 {% set pageTitle = "What is your date of birth?" %}
 {% extends "layout_question.html" %}
 
+{% set linkurl %}
+    {% if data['where-do-you-live']%}
+    address-lookup/delivery-address-postcode
+    {% else %}
+    address-lookup/delivery-address-select
+    {%endif%}
+{% endset %}
+
 {% block content %}
-    <form action="address-lookup/home-address-postcode" class="form" method="post">
+    <form action={{linkurl}} class="form" method="post">
         {# https://design-system.service.gov.uk/components/date-input/ #}
         {{ govukDateInput({
             id: "dob",
@@ -14,23 +22,9 @@
                     classes: "govuk-fieldset__legend--l"
                 }
             },
-            items: [
-                {
-                    name: "day",
-                    label: "Day",
-                    classes: "govuk-input--width-2"
-                },
-                {
-                    name: "month",
-                    label: "Month",
-                    classes: "govuk-input--width-2"
-                },
-                {
-                    name: "year",
-                    label: "Year",
-                    classes: "govuk-input--width-4"
-                }
-            ]
+            hint: {
+                text: "For example, 27 3 1972"
+            }
         }) }}
 
         {# https://design-system.service.gov.uk/components/button/ #}

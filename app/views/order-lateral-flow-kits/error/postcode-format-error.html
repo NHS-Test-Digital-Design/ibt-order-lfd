@@ -1,0 +1,46 @@
+{% set pageTitle = "Enter the postcode of the delivery address" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+
+    {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+            {
+                text: "Enter a UK postcode",
+                href: "#delPostcode"
+            }
+        ]
+    }) }}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        We're asking this question because the rules for who can get free tests depend on the country in the delivery address.
+    </p>
+
+    <form action="/delivery-postcode-answer" class="form" method="post">
+        {# https://design-system.service.gov.uk/components/text-input/ #}
+        {{ govukInput({
+            id: "delPostcode",
+            name: "delPostcode",
+            classes: "govuk-input--width-10",
+            autocomplete: "postal-code",
+            label: {
+                text: "Postcode",
+                isPageHeading: false
+            },
+            errorMessage: {
+                text: "Enter a UK postcode"
+            }
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

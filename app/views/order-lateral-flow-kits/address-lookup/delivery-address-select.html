@@ -1,16 +1,24 @@
-{% set pageTitle = "What is your delivery address?" %}
+{% set pageTitle = "What is the delivery address?" %}
 {% extends "layout_question.html" %}
 
-{% set code = data['deliveryPostcode'] or 'NH48 1SD' %}
+{% set code %}
+    {% if data['delPostcodeNew']%}
+        {{ data['delPostcodeNew'] }}
+    {% elif data['deliveryPostcode'] and data['delPostcode'] %}
+        {{ data['deliveryPostcode'] }}
+    {% elif data['delPostcode']%}
+        {{ data['delPostcode'] }}
+    {% else %}
+        NH48 1SD
+    {% endif %}
+{% endset%}
+
 
 {% block content %}
 
     <h1 class="govuk-heading-l  govuk-!-margin-bottom-8">
         {{ pageTitle }}
     </h1>
-    <p class="govuk-body">
-        This is the address where your test kit will be sent. 
-    </p>
 
     {# https://design-system.service.gov.uk/components/summary-list/ #}
     {{ govukSummaryList({
@@ -25,7 +33,7 @@
                 actions: {
                     items: [
                         {
-                            href: "delivery-address-postcode",
+                            href: "../country-postcode-change",
                             text: "Change",
                             visuallyHiddenText: "Postcode"
                         }
@@ -35,20 +43,19 @@
         ]
     }) }}
 
-    <form action="check-answers" class="form" method="post">
+    <form action="confirm-home-address" class="form" method="post">
         
         {# https://design-system.service.gov.uk/components/select/ #}
         {{ govukSelect({
-            id: "selectHomeAddress",
-            name: "selectHomeAddress",
+            id: "selectDelAddress",
+            name: "selectDelAddress",
             label: {
                 text: "Select an address"
             },
             items: [
                 {
                     value: "found",
-                    text: "5 addresses found",
-                    selected: true
+                    text: "5 addresses found"
                 },
                 {
                     value: "1 New Street, Your City, " + code,

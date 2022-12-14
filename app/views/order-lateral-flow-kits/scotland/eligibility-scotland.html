@@ -1,4 +1,4 @@
-{% set pageTitle = "Check if you are eligible to order rapid lateral flow tests " %}
+{% set pageTitle = "Most people in Scotland can no longer get free rapid lateral flow tests" %}
 {% extends "layout_question.html" %}
 
 {# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
@@ -8,41 +8,14 @@
         {{ pageTitle }}
     </h1>
 
-    <p class="govuk-body">In Scotland, you can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
+    <p class="govuk-body">You can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
 
-    <h2 class="govuk-heading-m">
-        If you are not eligible for rapid lateral flow tests
-    </h2>
+    {{ govukButton({
+        text: "Confirm and continue",
+        href: "test-reason-category-scotland",
+        classes: "govuk-!-margin-top-4"
+    }) }}
 
-    <p class="govuk-body">
-        <a href="https://www.mygov.scot/self-isolation-grant" class="govuk-link" target="_blank" rel="noopener noreferrer">Check if you or someone you care for is eligible for a Self Isolation Support Grant (opens in new tab)</a>, as you may be eligible for a PCR test.
-    </p>
-
-    <p class="govuk-body">
-        <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19/" class="govuk-link" target="_blank" rel="noopener noreferrer">Find out what to do if you think you have COVID-19 (opens in new tab)</a>. If you're worried, or your symptoms get worse, contact 111 or speak to your GP. In an emergency dial 999.
-    </p>
-
-    <p class="govuk-body">
-        You can also find <a href="https://www.nhs.uk/every-mind-matters/coronavirus/" class="govuk-link" target="_blank" rel="noopener noreferrer">advice and support if you're worried about COVID-19 (opens in new tab)</a>.
-    </p>
-
-    <h2 class="govuk-heading-m">
-        Disclaimer
-    </h2>
-
-    <p class="govuk-body">
-        By selecting 'Confirm and continue', I confirm I am eligible to order rapid lateral flow tests. 
-    </p>
-
-    <div class="govuk-button-group">
-        {{ govukButton({
-            text: "Continue",
-            href: "../login-choice",
-            classes: "govuk-!-margin-top-4"
-        }) }}
-
-        <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19" class="govuk-link">I am not eligible </a>
-    </div>
 {% endblock %}
 
 {# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}

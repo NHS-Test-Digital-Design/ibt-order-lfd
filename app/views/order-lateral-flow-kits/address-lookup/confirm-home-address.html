@@ -1,0 +1,66 @@
+{% set pageTitle = "Is your home address the same as your delivery address?" %}
+{% extends "layout_question.html" %}
+
+{% set address %}
+    {% if data['deliveryAddressLine1'] %}
+        {{ data['deliveryAddressLine1'] }},  {{ data['deliveryAddressLine2'] }}, {{ data['deliveryAddressTown'] }}, {{ data['deliveryAddressPostcode'] }}
+    {% elif data['selectDelAddress'] %}
+        {{ data['selectDelAddress'] }}
+    {% else %}
+        1 New Street, Your City, NH1 1SD
+    {% endif %}
+{% endset %}
+
+{% block content %}
+
+    <form action="/confirm-home-address-answer" class="form" method="post">
+
+        {% set titles %}
+            <h1 class="govuk-heading-l">
+                {{ pageTitle }}
+            </h1>
+
+            {{ govukSummaryList({
+                rows: [
+                    {
+                        key: {
+                            text: "Delivery address"
+                        },
+                        value: {
+                            html: address
+                        }
+                    }
+                ]
+            }) }}
+        {% endset %}
+
+        {# https://design-system.service.gov.uk/components/radios/ #}
+        {{ govukRadios({
+            idPrefix: "confirmHomeAddress",
+            name: "confirmHomeAddress",
+            fieldset: {
+                legend: {
+                    html: titles
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+
+
+{% endblock %}

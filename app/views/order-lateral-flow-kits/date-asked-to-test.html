@@ -3,6 +3,8 @@
 
 {% block content %}
     <form action="/order-lateral-flow-kits/login-choice" class="form" method="post">
+    
+        {# https://design-system.service.gov.uk/components/date-input/ #}
         {{ govukDateInput({
             id: "date-asked",
             namePrefix: "date-asked",
@@ -15,29 +17,13 @@
             },
             hint: {
                 text: "For example, 19 3 2022"
-            },
-            items: [
-                {
-                    name: "day",
-                    label: "Day",
-                    classes: "govuk-input--width-2"
-                },
-                {
-                    name: "month",
-                    label: "Month",
-                    classes: "govuk-input--width-2"
-                },
-                {
-                    name: "year",
-                    label: "Year",
-                    classes: "govuk-input--width-4"
-                }
-            ]
+            }
         }) }}
 
         {{ govukButton({
             text: "Continue",
             classes: "govuk-!-margin-top-4"
         }) }}
+
     </form>
 {% endblock %}

@@ -1,0 +1,51 @@
+{% set pageTitle = "Why do you need a test?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+    <form action="/reason-category-answer-ni" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-category-ni",
+            name: "test-reason-category-ni",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: "treatments",
+                    text: "You may be eligible for COVID-19 treatments",
+                    hint: {
+                        text: "These treatments are different to vaccinations and are not available to everyone"
+                    }
+                },
+                {
+                    value: "work",
+                    text: "You work in health or social care and you have COVID-19 symptoms"
+                },
+                {
+                    value: "carer",
+                    text: "You're a carer who provides close personal care for someone who is at higher risk if they contract COVID-19 and you have COVID-19 symptoms"
+                },
+                {
+                    value: "gp",
+                    text: "Your GP or a healthcare professional asked you to take a test"
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "none",
+                    text: "None of these"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

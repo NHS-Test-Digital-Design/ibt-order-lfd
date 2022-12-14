@@ -1,0 +1,45 @@
+{% set pageTitle = "Why do you need a test?" %}
+{% extends "layout_question.html" %}
+
+{# *** WALES - WALES - WALES *** #}
+{% block content %}
+    <form action="/reason-category-answer-wales" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-category-wales",
+            name: "test-reason-category-wales",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: "treatments",
+                    text: "A doctor or specialist has said you're eligible for new COVID-19 treatments",
+                    hint: {
+                        text: "You're in the small group of people who have a serious health condition that makes you eligible for special treatments for COVID-19. These treatments are different to vaccinations and are not available to everyone."
+                    }
+                },
+                {
+                    value: "gp",
+                    text: "Your GP or a healthcare professional has asked you to take a test"
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "none",
+                    text: "None of these"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
+{# *** WALES - WALES - WALES *** #}

@@ -1,150 +1,256 @@
 {% set pageTitle = "Check your answers" %}
 {% extends "layout_question.html" %}
 
+{% set monthConvert %}
+    {% if data['dob-month'] or data['date-asked-month'] == "1" %}
+        January
+    {% elif data['dob-month'] or data['date-asked-month'] == "2" %}
+        February
+    {% elif data['dob-month'] or data['date-asked-month'] == "3" %}
+        March
+    {% elif data['dob-month'] or data['date-asked-month'] == "4" %}
+        April
+    {% elif data['dob-month'] or data['date-asked-month'] == "5" %}
+        May
+    {% elif data['dob-month'] or data['date-asked-month'] == "6" %}
+        June
+    {% elif data['dob-month'] or data['date-asked-month'] == "7" %}
+        July
+    {% elif data['dob-month'] or data['date-asked-month'] == "8" %}
+        August
+    {% elif data['dob-month'] or data['date-asked-month'] == "9" %}
+        September
+    {% elif data['dob-month'] or data['date-asked-month'] == "10" %}
+        October
+    {% elif data['dob-month'] or data['date-asked-month'] == "11" %}
+        November
+    {% elif data['dob-month'] or data['date-asked-month'] == "12" %}
+        December
+    {% endif %}
+{% endset %}
+
+{% set name %}
+    {% if data['first-name'] %}
+        {{ data['first-name'] + " " + data['last-name'] }}
+        {% else %}
+        Alex Kidd
+    {% endif %}
+{% endset %}
+
+{% set birthDate %}
+    {% if data['dob-day'] %}
+        {{ data['dob-day'] + monthConvert + data['dob-year'] }}
+        {% else %}
+        4 March 1980
+    {% endif %}
+{% endset %}
+
+{% set testReason %}
+    {% if data ['treatment-eligible'] == "yes" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-health'] == "procedure" %}
+        Being admitted into {{ data['hospital-name'] or 'Manchester Royal Infirmary' }} for a procedure or treatment
+    {% elif data ['test-reason-health'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test 
+    {% elif data ['test-reason-work'] == "nhs" %}
+        You work for the NHS in a patient-facing role
+    {% elif data ['test-reason-work'] == "ihp" %}
+        You work with NHS patients for {{ data['ihp-name'] or 'an independent healthcare provider '}}
+    {% elif data ['test-reason-work'] == "social" %}
+        You work in adult social care as a {{ data['job-title'] or 'social worker'}}
+    {% elif data ['test-reason-category-ni'] == "treatments" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-ni'] == "work" %}
+        You work in health or social care as a {{ data['job-title'] or 'social worker'}} and you have COVID-19 symptoms
+    {% elif data ['test-reason-category-ni'] == "carer" %}
+        You work as a carer who provides close personal care for someone who is at higher risk if they contract COVID-19 and you have COVID-19 symptoms
+    {% elif data ['test-reason-category-ni'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test
+    {% elif data ['test-reason-category-scotland'] == "treatments" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-wales'] == "treatments" %}
+        Eligible for COVID-19 treatments
+    {% elif data ['test-reason-category-wales'] == "gp" %}
+        On {{ data['date-asked-day'] + monthConvert + data['date-asked-year'] or '5 March 2023'}} a GP or healthcare professional asked you to get a test
+    {% else %}
+        Eligible for COVID-19 treatments 
+    {% endif %}
+{% endset %}
+
+{% set email %}
+    {% if data['confirmEmailAddress'] %}
+        {{ data['confirmEmailAddress'] }}
+        {% else %}
+        your@email-is.cool
+    {% endif %}
+{% endset %}
+
+{% set phoneNumber %}
+    {% if data['confirmMobileNumber'] %}
+        {{ data['confirmMobileNumber'] }}
+        {% else %}
+        07766 554321
+    {% endif %}
+{% endset %}
+
+{% set contactDetails %}
+    <p class="govuk-body">
+        {{ email }}
+    </p>
+    <p class="govuk-body">
+        {{ phoneNumber }}
+    </p>
+{% endset %}
+
+{% set delAddress %}
+    {% if data['selectDelAddress'] %}
+        {{ data['selectDelAddress']}} 
+    {% elif data['deliveryAddressLine1'] %}
+        {{ data['deliveryAddressLine1']}}, {{ data['deliveryAddressLine2']}}, {{ data['deliveryAddressTown']}}, {{ data['delPostcode' or 'deliveryPostcode' or 'delPostcodeNew']}}
+    {% else %}
+        101, Default Road, Standard City, NHS A17
+    {% endif %}
+{% endset %}
+
+{% set homeAddress %}
+    {% if data['confirmHomeAddress'] == "yes" %}
+        {{ delAddress }}
+    {% elif data['confirmHomeAddress'] == "no" and data['selectDelAddress']%}
+        {{ data['selectDelAddress']}} 
+    {% elif data['confirmHomeAddress'] == "no" and data['addressLine1'] %}
+        {{ data['addressLine1']}}, {{ data['addressLine2']}}, {{ data['addressTown']}}, {{ data['addressPostcode']}}
+    {% else %}
+        101, Default Road, Standard City, NHS A17
+    {% endif %}
+{% endset %}
+
 {% block content %}
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
     <h1 class="govuk-heading-l">
         {{ pageTitle }}
     </h1>
 
-    <div class="govuk-!-margin-bottom-9">
-        <h2 class="govuk-heading-m">
-            Reason for test
-        </h2>
-        {{ govukSummaryList({
-            rows: [
-                {
-                    key: {
-                        text: "Reason"
-                    },
-                    value: {
-                        text: "Eligible for COVID-19 treatments"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change reason for test"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }) }}
-    </div>
+    <h2 class="govuk-heading-m">
+        Reason for test
+    </h2>
 
-    <div class="govuk-!-margin-bottom-9">
-        <h2 class="govuk-heading-m">
-            Personal details
-        </h2>
-        {{ govukSummaryList({
-            rows: [
-                {
-                    key: {
-                        text: "Name"
-                    },
-                    value: {
-                        text: "Alex Kidd"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change name"
-                            }
-                        ]
-                    }
+    {# https://design-system.service.gov.uk/components/summary-list/ #}
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Reason"
                 },
-                {
-                    key: {
-                        text: "Date of birth"
-                    },
-                    value: {
-                        text: "6 December 2000"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change date of birth"
-                            }
-                        ]
-                    }
+                value: {
+                    text: testReason
                 },
-                {
-                    key: {
-                        text: "Contact details"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>your@email.com</p><p class='govuk-body'>07766 554321</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your contact details"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Country of residance"
-                    },
-                    value: {
-                        text: "England"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your country of residance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Home address"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your home address"
-                            }
-                        ]
-                    }
-                },
-                {
-                    key: {
-                        text: "Delivery address"
-                    },
-                    value: {
-                        html: "<p class='govuk-body'>1 New Street, Your City, </p><p class='govuk-body'>NH48 1SD</p>"
-                    },
-                    actions: {
-                        items: [
-                            {
-                                href: "#",
-                                text: "Change",
-                                visuallyHiddenText: "change your delivery address"
-                            }
-                        ]
-                    }
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change reason for test"
+                        }
+                    ]
                 }
-            ]
-        }) }}
-    </div>
+            }
+        ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+        Personal details
+    </h2>
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Name"
+                },
+                value: {
+                    text: name
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change name"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Date of birth"
+                },
+                value: {
+                    text: birthDate
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change date of birth"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Contact details"
+                },
+                value: {
+                    html: contactDetails
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your contact details"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Home address"
+                },
+                value: {
+                    html: "<p class='govuk-body'>" + homeAddress + "</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your home address"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Delivery address"
+                },
+                value: {
+                    html: "<p class='govuk-body'>" + delAddress + "</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your delivery address"
+                        }
+                    ]
+                }
+            }
+        ]
+    }) }}
 
     <h2 class="govuk-heading-m">
         Declaration
@@ -154,21 +260,22 @@
     </p>
     <ul class="govuk-list govuk-list--bullet">
         <li>
-            The information I've provided is up to date and correct 
+            the information I've provided is up to date and correct 
         </li>
         <li>
-            I agree with the Terms and conditions and Privacy policy of this service 
+            I agree with the terms and conditions and privacy policy of this service 
         </li>
         <li>
             I am happy to be contacted about my order 
         </li>
     </ul>
+    
 
     {# https://design-system.service.gov.uk/components/button/ #}
-        {{ govukButton({
-            text: "Agree and place order",
-            classes: "govuk-!-margin-top-4",
-            href: "confirmation"
-        }) }}
+    {{ govukButton({
+        text: "Agree and place order",
+        classes: "govuk-!-margin-top-4",
+        href: "confirmation"
+    }) }}
 
 {% endblock %}

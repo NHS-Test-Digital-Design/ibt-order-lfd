@@ -1,0 +1,37 @@
+{% set pageTitle = "You are not eligible for free rapid lateral flow tests  " %}
+{% extends "layout_question.html" %}
+
+{# *** NI - NI - NI *** #}
+
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    {{ govukWarningText({
+        text: "Do not phone for a test. You will not be able to get one this way.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    <p class="govuk-body">
+        Although you cannot get free tests, you can buy COVID-19 tests from some pharmacies and shops, in person and online.
+    </p>
+    
+    <p class="govuk-body">
+        Find out <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-how-stay-safe-and-help-prevent-spread" class="govuk-link">how to stay safe and help prevent the spread of COVID-19</a>.
+    </p>
+
+    <h2 class="govuk-heading-m">
+        If you have symptoms
+    </h2>
+    <p class="govuk-body">
+        Find out <a href="https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19" class="govuk-link"> what to do if you think you have COVID-19</a>.
+    </p>
+
+    <p class="govuk-body">
+        If you're worried, or your symptoms get worse, contact your GP or your GP out-of-hours service. In an emergency dial 999.
+    </p>
+{% endblock %}
+
+{# *** NI - NI - NI *** #}

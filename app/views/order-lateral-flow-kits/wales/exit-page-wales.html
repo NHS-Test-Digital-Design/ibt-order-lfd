@@ -1,0 +1,33 @@
+{% set pageTitle = "You are not eligible for free rapid lateral flow tests  " %}
+{% extends "layout_question.html" %}
+
+{# *** NI - NI - NI *** #}
+
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    {{ govukWarningText({
+        text: "Do not phone for a test. You will not be able to get one this way.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    <p class="govuk-body">
+        Although you cannot get free tests, you can buy COVID-19 tests from some pharmacies and shops, in person and online.
+    </p>
+    
+    <h2 class="govuk-heading-m">
+        If you're worried
+    </h2>
+    <p class="govuk-body">
+        Find out <a href="https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19" class="govuk-link">what to do if you think you have COVID-19</a>. If you're worried, or your symptoms get worse, contact 111 or speak to your GP. In an emergency dial 999.
+    </p>
+
+    <p class="govuk-body">
+        If you do not have symptoms, <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/how-to-avoid-catching-and-spreading-coronavirus-covid-19/" class="govuk-link">find out how to avoid catching and spreading COVID-19</a>. You can also find <a href="https://callhelpline.org.uk/" class="govuk-link">advice and support if you're worried about COVID-19</a>.
+    </p>
+{% endblock %}
+
+{# *** NI - NI - NI *** #}

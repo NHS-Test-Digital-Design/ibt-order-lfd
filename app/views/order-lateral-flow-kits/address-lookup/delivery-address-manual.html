@@ -1,17 +1,24 @@
 {% set pageTitle = "Enter your delivery address" %}
 {% extends "layout_question.html" %}
 
+{% set code %}
+    {% if data['delPostcodeNew'] %}
+        {{data['delPostcodeNew']}}
+    {% elif data['delPostcode']%}
+        {{data['delPostcode']}}
+    {% else %}
+        NH48 1SD
+    {% endif %}    
+{% endset %}
+
 {% block content %}
 
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
     <h1 class="govuk-heading-l">
         {{ pageTitle }}
     </h1>
-    <p class="govuk-body">
-        This is the address where your test kit will be sent.
-    </p>
-
-    <form action="../check-answers" class="form" method="post">
+    
+    <form action="confirm-home-address" class="form" method="post">
         {# https://design-system.service.gov.uk/components/text-input/ #}
         {{ govukInput({
             id: "deliveryAddressLine1",
@@ -38,14 +45,45 @@
                 text: "Town or city"
             }
         }) }}
-        {{ govukInput({
-            id: "deliveryAddressPostcode",
-            name: "deliveryAddressPostcode",
-            classes: "govuk-input--width-10",
-            label: {
-                text: "Postcode"
-            }
-        }) }}
+
+        {% if data['where-do-you-live']%}
+        
+            {{ govukInput({
+                label: {
+                    text: "Postcode"
+                },
+                classes: "govuk-input--width-10",
+                id: "deliveryAddressPostcode",
+                name: "deliveryAddressPostcode",
+                autocomplete: "postal-code"
+            }) }}
+
+        {% else %}
+
+            {# https://design-system.service.gov.uk/components/summary-list/ #}
+            {{ govukSummaryList({
+                rows: [
+                    {
+                        key: {
+                            text: "Postcode"
+                        },
+                        value: {
+                            text:  code
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "../country-postcode-change",
+                                    text: "Change",
+                                    visuallyHiddenText: "Postcode"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }) }}
+
+        {%endif%}
 
         {# https://design-system.service.gov.uk/components/button/ #}
         {{ govukButton({

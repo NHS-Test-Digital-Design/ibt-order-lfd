@@ -1,0 +1,862 @@
+{% set pageTitle = "Order LFD test kits Prototype" %}
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">
+    {{ pageTitle }}
+</h1>
+
+<h2 class="govuk-heading-m">
+    Postcodes for routing.
+</h2>
+<p class="govuk-body">
+    Use the following postcodes on the <a href='../postcode' class='govuk-link'>Delivery postcode</a> screen to follow desired route. If no postcode is entered to Scottish route will be followed.
+</p>
+
+{{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+        {
+            text: "Postcode"
+        },
+        {
+            text: "Destination"
+        }
+    ],
+    rows: [
+        [
+            {
+                text: "ENG 1ND"
+            },
+            {
+                text: "English journey"
+            }
+        ],
+        [
+            {
+                text: "SC07 1ND"
+            },
+            {
+                text: "Scottish journey - Default"
+            }
+        ],
+        [
+            {
+                text: "N0R 1ND"
+            },
+            {
+                text: "Northern Ireland Journey"
+            }
+        ],
+        [
+            {
+                text: "WA1 3LS"
+            },
+            {
+                text: "Wales Journey"
+            }
+        ],
+        [
+            {
+                text: "ERR 0R1"
+            },
+            {
+                text: "Error - Address not found"
+            }
+        ],
+        [
+            {
+                text: "API ERR"
+            },
+            {
+                text: "Error - Technical problem"
+            }
+        ],
+        [
+            {
+                text: "NO DEL"
+            },
+            {
+                text: "Error - Unable to deliver to this address"
+            }
+        ],
+        [
+            {
+                text: "ERROR"
+            },
+            {
+                text: "Error - invalid postcode format"
+            }
+        ]
+    ]
+}) }}
+
+
+<h2 class="govuk-heading-m">
+    Notes
+</h2>
+
+<p class="govuk-body">
+    On the <a href="../login-choice" class="govuk-link">login choice</a> screen selecting 'Create account' forwards to the <a href="../address-lookup/delivery-address-select" class="govuk-link">select delivery address</a> screen replicating the behaviour of a logged in user with mis-matching delivery post codes. Selecting 'Sign in' forwards to the <a href="../check-answers" class="govuk-link">check your answers</a> screen replicating the bahaviour of a logged in user with matching postcode.
+</p>
+
+<h2 class="govuk-heading-m">
+    Useful links
+</h2>
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+    <li>
+        <a href="https://github.com/NHS-Test-Digital-Design/ibt-order-lfd" class="govuk-link">Github repo home</a>
+    </li>
+    <li>
+        <a href="https://github.com/NHS-Test-Digital-Design/ibt-order-lfd/pulls" class="govuk-link">Github pull requests</a>
+    </li>
+    <li>
+        <a href="https://miro.com/app/board/uXjVPXHQi18=/?moveToWidget=3458764533303368309&cot=14" class="govuk-link">Miro design board</a>
+    </li>
+</ul>
+
+
+
+{{ govukTable({
+    caption: "Flow screens",
+    firstCellIsHeader: true,
+    head: [
+        {
+            text: "Screen"
+        },
+        {
+            text: "File"
+        },
+        {
+            text: "Status"
+        }
+    ],
+    rows: [
+        [
+            {
+                html: "<a href='../../' class='govuk-link'>Start screen</a>"
+            },
+            {
+                text: "views/index.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../postcode' class='govuk-link'>Delivery postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/postcode.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../country-postcode-change' class='govuk-link'>Delivery postcode - change</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/country-postcode-change.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Proto only",
+                    classes: "govuk-tag--red"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../country-choice' class='govuk-link'>Delivery country choice</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/country-choice.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../symptoms-da' class='govuk-link'>Symptoms - DA's</a>"
+            },
+            {
+                text: "views/symptoms-da.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../scotland/eligibility-scotland' class='govuk-link'>Eligibility - Scotland</a>"
+            },
+            {
+                text: "views/scotland/eligibility-scotland.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../scotland/test-reason-category-scotland' class='govuk-link'>Test reason - Scotland</a>"
+            },
+            {
+                text: "views/scotland/test-reason-category-scotland.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../ni/eligibility-ni' class='govuk-link'>Eligibility - Northern Ireland</a>"
+            },
+            {
+                text: "views/ni/eligibility-ni.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../ni/test-reason-category-ni' class='govuk-link'>Test reason - Northern Ireland</a>"
+            },
+            {
+                text: "views/ni/test-reason-category-ni.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../wales/eligibility-wales' class='govuk-link'>Eligibility - Wales</a>"
+            },
+            {
+                text: "views/wales/eligibility-wales.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../wales/test-reason-category-wales' class='govuk-link'>Test reason - Wales</a>"
+            },
+            {
+                text: "views/wales/test-reason-category-wales.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../condition' class='govuk-link'>Symptoms - England</a>"
+            },
+            {
+                text: "views/condition.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../eligibility' class='govuk-link'>Eligibility - England</a>"
+            },
+            {
+                text: "views/england/eligibility.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../test-reason-category' class='govuk-link'>Test reason - England</a>"
+            },
+            {
+                text: "views/test-reason-category.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../test-reason-health' class='govuk-link'>Test reason health</a>"
+            },
+            {
+                text: "views/test-reason-health.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../test-reason-work' class='govuk-link'>Test reason work</a>"
+            },
+            {
+                text: "views/test-reason-work.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../qualifying-condition' class='govuk-link'>COVID-19 treatments</a>"
+            },
+            {
+                text: "views/qualifying-condition.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../hospital-name' class='govuk-link'>Hospital name</a>"
+            },
+            {
+                text: "views/hospital-name.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../date-asked-to-test' class='govuk-link'>Date asked to test</a>"
+            },
+            {
+                text: "views/date-asked-to-test.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../healthcare-provider-name' class='govuk-link'>Healthcare provider</a>"
+            },
+            {
+                text: "views/healthcare-provider-name.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../adult-social-care-role' class='govuk-link'>Job title</a>"
+            },
+            {
+                text: "views/adult-social-care-role.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../login-choice' class='govuk-link'>NHS login choice</a>"
+            },
+            {
+                text: "views/login-choice.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../name' class='govuk-link'>Name</a>"
+            },
+            {
+                text: "views/name.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../email' class='govuk-link'>Do you have an email address?</a>"
+            },
+            {
+                text: "views/email.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../contact-mobile-number' class='govuk-link'>Do you have a mobile number?</a>"
+            },
+            {
+                text: "views/contact-mobile-number.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../age' class='govuk-link'>Date of birth</a>"
+            },
+            {
+                text: "views/age.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/unable-to-deliver' class='govuk-link'>Error - Can not deliver to postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/unable-to-deliver.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/tech-error' class='govuk-link'>Error - Technical problem</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/tech-error.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/postcode-format-error' class='govuk-link'>Error - Postcode format</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/postcode-format-error.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../error/postcode-lookup-error' class='govuk-link'>Error - Postcode lookup</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/error/postcode-lookup-error.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/delivery-address-postcode' class='govuk-link'>Delivery address postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/delivery-address-postcode.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/delivery-address-select' class='govuk-link'>Delivery address select</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/delivery-address-select.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/delivery-address-manual' class='govuk-link'>Delivery address manual</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/delivery-address-manual.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/confirm-home-address' class='govuk-link'>Confirm home address</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/confirm-home-address.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/home-address-postcode' class='govuk-link'>Home address postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/home-address-postcode.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/home-address-select' class='govuk-link'>Home address select</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/home-address-select.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/home-address-manual' class='govuk-link'>Home address mauual</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/home-address-manual.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/da-switch-confirm' class='govuk-link'>Confirm country switch postcode</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/da-switch-address.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../address-lookup/da-switch-country-confirm' class='govuk-link'>Confirm country switch</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/address-lookup/da-switch-country-confirm.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../check-answers' class='govuk-link'>Check answers</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/check-answers.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Updated",
+                    classes: "govuk-tag--yellow"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../return-to-work' class='govuk-link'>Return to work</a>"
+            },
+            {
+                text: "order-lateral-flow-kitsreturn-to-work.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "not in use",
+                    classes: "govuk-tag--grey"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../confirmation' class='govuk-link'>Order confirmation</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/confirmation.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../england/exit-page' class='govuk-link'>Exit screen - England</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/england/exit-page.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../scotland/exit-page-scotland' class='govuk-link'>Exit screen - Scotland</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/scotland/exit-page-scotland.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                }) 
+            }
+        ],
+        [
+            {
+                html: "<a href='../ni/exit-page-ni' class='govuk-link'>Exit screen - NI</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/ni/exit-page-ni.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "new",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../wales/exit-page-wales' class='govuk-link'>Exit screen - Wales</a>"
+            },
+            {
+                text: "views/wales/exit-page-wales.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../england/exit-page-test-pause' class='govuk-link'>Exit screen - asymptomatic pause - England</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/england/exit-page-test-pause.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ],
+        [
+            {
+                html: "<a href='../call-us' class='govuk-link'>Exit screen - call us</a>"
+            },
+            {
+                text: "order-lateral-flow-kits/call-us.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "Unchanged",
+                    classes: "govuk-tag--blue"
+                })
+            }
+        ]
+    ]
+}) }}
+
+
+
+
+{% endblock %}

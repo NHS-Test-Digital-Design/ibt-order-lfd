@@ -1,0 +1,41 @@
+{% set pageTitle = "Why do you need a test?" %}
+{% extends "layout_question.html" %}
+
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
+{% block content %}
+    <form action="/reason-category-answer-scotland" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason-category-scotland",
+            name: "test-reason-category-scotland",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: [
+                {
+                    value: "treatments",
+                    text: "You're in the small group of people who have a serious health condition that makes you eligible for special treatments for COVID-19",
+                    hint: {
+                        text: "These treatments are different to vaccinations and are not available to everyone."
+                    }
+                },
+                {
+                    divider: "or"
+                },
+                {
+                    value: "another",
+                    text: "Another reason"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}

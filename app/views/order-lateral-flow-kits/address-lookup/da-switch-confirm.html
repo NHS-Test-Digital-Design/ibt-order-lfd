@@ -1,0 +1,94 @@
+{% set oldPostcode %}
+    {% if data['delPostcode'] %}
+        {{ data['delPostcode'] }}
+    {% else %}
+        SC0T 1ND 
+    {% endif %}
+{% endset %}
+
+{% set newPostcode %}
+    {% if data['delPostcodeNew'] %}
+        {{ data['delPostcodeNew'] }}
+    {% else %}
+        ENG 1ND 
+    {% endif %}
+{% endset %}
+
+{% set country %}
+    {% if data['delPostcodeNew'] == "ENG 1ND" %}
+        England
+    {% elif data['delPostcodeNew'] == "SC07 1ND"%}
+        Scotland
+    {% elif data['delPostcodeNew'] == "N0R 1ND"%}
+        Northern Ireland
+    {% elif data['delPostcodeNew'] == "WA1 3LS"%}
+        Wales
+    {% else %}
+        England
+    {% endif %}
+{% endset %}
+
+
+
+{% set pageTitle = "If you continue, we'll need to check if you're eligible for tests in" + country %}
+{% extends "layout_question.html" %}
+
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+            {
+                key: {
+                    text: "Previous postcode"
+                },
+                value: {
+                    text: oldPostcode
+                }
+            },
+            {
+                key: {
+                    text: "New postcode"
+                },
+                value: {
+                    text: newPostcode
+                }
+            }
+        ]
+    }) }}
+
+    <form action="/postcode-da-change-confirm" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "daChangeConfirm",
+            name: "daChangeConfirm",
+            classes: "govuk-radios--inline",
+            fieldset: {
+                legend: {
+                    text: "Are you sure you want to change the delivery postcode?",
+                    isPageHeading: false
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    html: "Yes"
+                },
+                {
+                    value: "no",
+                    html: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Confirm and continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

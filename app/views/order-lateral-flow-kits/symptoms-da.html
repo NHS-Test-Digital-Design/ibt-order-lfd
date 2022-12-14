@@ -1,0 +1,134 @@
+{% set pageTitle = "Coronavirus (COVID-19) symptoms" %}
+{% extends "layout_question.html" %}
+
+{# set the symptoms link url dependent on the country. Defaults to Scotland if no country selected #}
+{% set symptomsUrl %}
+    {% if data['delPostcode'] == "SC07 1ND"%}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% elif data['delPostcode'] == "N0R 1ND" %}
+        https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19
+    {% elif data['delPostcode'] == "WA1 3LS" %}
+        https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19
+    {% else %}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% endif %}
+{% endset %}
+
+{# use the updated postcode if there is one if not use symptomsUrl #}
+{% set NewSymptomsUrl %}
+    {% if data['delPostcodeNew'] == "SC07 1ND"%}
+        https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19
+    {% elif data['delPostcodeNew'] == "N0R 1ND" %}
+        https://www.nidirect.gov.uk/articles/symptoms-respiratory-infections-including-covid-19
+    {% elif data['delPostcodeNew'] == "WA1 3LS" %}
+        https://gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19
+    {% else %}
+        {{ symptomsUrl }}
+    {% endif %}
+{% endset %}
+
+{# set the routing url based on the delivery post code to route into correct journey #}
+{% set daUrl %}
+    {% if data['delPostcode'] == "SC07 1ND" %}
+        scotland/eligibility-scotland
+    {% elif data['delPostcode'] == "N0R 1ND" %}
+        ni/eligibility-ni
+    {% elif data['delPostcode'] == "WA1 3LS" %}
+        wales/eligibility-wales
+    {% else %}
+        scotland/eligibility-scotland
+    {% endif %}
+{% endset %}
+
+{# use the updated postcode if it exists in not ise daUrl#}
+{% set newDaUrl %}
+    {% if data['delPostcodeNew'] == "SC07 1ND" %}
+        scotland/eligibility-scotland
+    {% elif data['delPostcodeNew'] == "N0R 1ND" %}
+        ni/eligibility-ni
+    {% elif data['delPostcodeNew'] == "WA1 3LS" %}
+        wales/eligibility-wales
+    {% else %}
+        {{ daUrl }} 
+    {% endif %}
+{% endset %}
+
+
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p>Symptoms of COVID-19 can include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>
+            continuous cough
+        </li>
+        <li>
+            a high temperature, fever or chills
+        </li>
+        <li>
+            loss of or change in, your normal sense of taste or smell
+        </li>
+        <li>
+            shortness of breath
+        </li>
+        <li>
+            unexplained tiredness, lack of energy
+        </li>
+        <li>
+            muscle aches or pains that are not due to exercise
+        </li>
+        <li>
+            not wanting to eat or not feeling hungry
+        </li>
+        <li>
+            headache that is unusual or longer lasting than usual
+        </li>
+        <li>
+            sore throat, stuffy or runny nose
+        </li>
+        <li>
+            diarrhoea
+        </li>
+        <li>
+            feeling sick or being sick
+        </li>
+    </ul>
+
+    <p>
+        <a href={{NewSymptomsUrl}} class="govuk-link" rel="noreferrer noopener" target="_blank">Find out more about COVID-19 symptoms (opens in new tab).</a>
+    </p>
+
+    <form class="form" action={{newDaUrl}} method="post">
+        {{ govukRadios({
+            idPrefix: "symptoms-da",
+            name: "symptoms-da",
+            classes: "govuk-!-margin-top-5",
+            fieldset: {
+                legend: {
+                    text: "Do you have any COVID-19 symptoms?",
+                    isPageHeading: false,
+                    classes: "govuk-label govuk-label--s"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
