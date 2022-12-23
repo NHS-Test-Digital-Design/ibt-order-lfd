@@ -1,0 +1,23 @@
+
+.govuk-panel--interuption{
+    text-align: left;
+    color: #fff;
+    background: govuk-colour("blue");
+    p, li, h1, h2, h3, a,{
+        color: #fff;
+    }
+
+    a.govuk-link{
+        color:  govuk-colour("white");
+    }
+
+    .govuk-button{
+        background-color: govuk-colour("white");
+        color: govuk-colour("blue");
+        font-weight: bold;
+        box-shadow: 0 2px 0 govuk-colour("dark-blue");
+        &:hover{
+            background-color: govuk-colour("light-grey");
+        }
+    }
+}
