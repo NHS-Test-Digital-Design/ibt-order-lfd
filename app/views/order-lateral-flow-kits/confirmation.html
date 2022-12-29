@@ -32,6 +32,23 @@
         If you need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm. Details are also in your confirmation email. 
     </p>
 
+    {% if data['blindPartallySighted'] == "yes" %}
+        <h2 class="govuk-heading-m">
+            Get instructions in Braille, audio or large print
+        </h2>
+        <p class="govuk-body">
+            You can get Braille, audio or large print test kit instructions from the Royal National Institute of Blind People (RNIB).
+        </p>
+        <p class="govuk-body">
+            The brand name of your test kit will be <span class="govuk-!-font-weight-bold">Acon FlowFlex</span>. You need to know this to get the correct instructions from the RNIB.
+        </p>
+        <p class="govuk-body">
+            <a href="https://www.rnib.org.uk/your-eyes/navigating-sight-loss/sight-loss-and-wellbeing/covid-19-test-kit-instructions-in-alternative-formats/download-covid-19-rapid-lateral-flow-test-kit-instructions/" class="govuk-link">Download or order alternative format instructions from the RNIB website</a> or call 0303 123 9999 (Monday to Friday 8am to 8pm and Saturday 9am to 1pm).
+        </p>
+
+    {% endif %}
+
+
     <h2 class="govuk-heading-m">
         What is in the test pack
     </h2>
@@ -39,7 +56,6 @@
     <p class="govuk-body">
         The pack contains:
     </p>
-
 
     <ul class="govuk-list govuk-list--bullet">
         <li>

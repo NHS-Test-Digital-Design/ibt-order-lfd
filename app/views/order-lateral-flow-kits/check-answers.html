@@ -124,6 +124,14 @@
     {% endif %}
 {% endset %}
 
+{% set blind %}
+    {% if data['blindPartallySighted'] == "yes" %}
+    Yes 
+    {% else %}
+    No
+    {% endif %}
+{% endset %}
+
 {% block content %}
     {# https://design-system.service.gov.uk/styles/typography/#headings #}
     <h1 class="govuk-heading-l">
@@ -245,6 +253,23 @@
                             href: "#",
                             text: "Change",
                             visuallyHiddenText: "change your delivery address"
+                        }
+                    ]
+                }
+            },
+            {
+                key: {
+                    text: "Blind or partially sighted"
+                },
+                value: {
+                    html: "<p class='govuk-body'>" + blind + "</p>"
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "change your blind or partially sighted status"
                         }
                     ]
                 }

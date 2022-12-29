@@ -1,0 +1,40 @@
+{% set pageTitle = "Are you blind or partially sighted?" %}
+{% extends "layout_question.html" %}
+
+{% block content %}
+
+    <form action="login-choice" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "blindPartallySighted",
+            name: "blindPartallySighted",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: "We can send you a type of test that may be easier to use if you're blind or partially sighted."
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+
+    </form>
+
+{% endblock %}
