@@ -9,11 +9,11 @@ router.post('/delivery-postcode-answer', function (req, res) {
     if (delPostcode == "ENG 1ND") {
         res.redirect('order-lateral-flow-kits/condition')
     } else if (delPostcode == "SC07 1ND") {
-        res.redirect('order-lateral-flow-kits/symptoms-da')
+        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
     } else if (delPostcode == "N0R 1ND") {
-        res.redirect('order-lateral-flow-kits/symptoms-da')
+        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
     } else if (delPostcode == "WA1 3LS"){
-        res.redirect('order-lateral-flow-kits/symptoms-da')
+        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
     } else if (delPostcode == "ERR 0R1"){
         res.redirect('order-lateral-flow-kits/country-choice')
     } else if (delPostcode == "API ERR"){
