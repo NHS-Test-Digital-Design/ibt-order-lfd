@@ -80,6 +80,46 @@ router.post('/country-answer', function (req, res) {
     }
 })
 
+// test-reason.html routing
+router.post('/test-reason-answer', function (req, res) {
+    var testReason = req.session.data['test-reason']
+    if (testReason == "another"){
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+    } else {
+        res.redirect('order-lateral-flow-kits/test-reason-more')
+    }
+})
+
+// test-reason-more.html routing
+router.post('/test-reason-more-answer', function (req, res) {
+    var testReasonMore = req.session.data['test-reason-more']
+    if (testReasonMore == "treatments"){
+        res.redirect('order-lateral-flow-kits/qualifying-condition')
+    } else if (testReasonMore == "hospital") {
+        res.redirect('order-lateral-flow-kits/hospital-name')
+    } else if (testReasonMore == "asked-to-test"){
+        res.redirect('order-lateral-flow-kits/date-asked-to-test')
+    } else if (testReasonMore == "nhs-patient-facing"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (testReasonMore == "ihp-nhs-patients"){
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (testReasonMore == "adult-social-care"){
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
+    } else if (testReasonMore == "return-to-work"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (testReasonMore == "work-with-hi-risk"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (testReasonMore == "you-are-hi-risk"){
+        res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (testReasonMore == "another"){
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+    } else {
+        res.redirect('order-lateral-flow-kits/login-choice')
+    }
+})
+
+
+
 // test-reason-category.html routing.
 router.post('/reason-category-answer', function (req, res) {
     var category = req.session.data['test-reason-category']

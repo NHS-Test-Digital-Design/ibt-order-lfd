@@ -4,7 +4,7 @@
 {% if data['do-you-have-symptoms'] === "yes" %}
     {% set radios = [ 
         {
-            value: "health",
+            value: "medical",
             text: "Medical reasons",
             hint: {
                 text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
@@ -30,7 +30,7 @@
 
     {% set radios = [
         {
-            value: "health",
+            value: "medical",
             text: "Medical reasons",
             hint: {
                 text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
@@ -62,10 +62,10 @@
 {% endif %}
 
 {% block content %}
-    <form action="/reason-category-answer" class="form" method="post">
+    <form action="/test-reason-answer" class="form" method="post">
         {{ govukRadios({
-            idPrefix: "test-reason-category",
-            name: "test-reason-category",
+            idPrefix: "test-reason",
+            name: "test-reason",
             fieldset: {
                 legend: {
                     text: pageTitle,
