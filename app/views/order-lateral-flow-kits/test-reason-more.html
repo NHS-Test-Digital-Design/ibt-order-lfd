@@ -55,7 +55,7 @@
             divider: "or"
         },
         {
-            value: "another",
+            value: "not-listed",
             text: "The reason is not listed"
         }
     ] %}
@@ -88,7 +88,7 @@
             divider: "or"
         },
         {
-            value: "another",
+            value: "not-listed",
             text: "The reason is not listed"
         }
     ]%}
@@ -107,7 +107,7 @@
             divider: "or"
         },
         {
-            value: "another",
+            value: "not-listed",
             text: "The reason is not listed"
         }
     ]%}
@@ -128,6 +128,12 @@
             }, 
             items: radios
         }) }}
+        
+        {% if data['test-reason'] === "nhs-patient-facing" or data['test-reason'] === "ihp-nhs-patients"%}
+            <p class="govuk-body">
+                Find out <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/people-at-higher-risk/who-is-at-high-risk-from-coronavirus/" class="govuk-link" rel="noreferrer noopener" target="_blank">who is at high risk of getting seriously ill from COVID-19 (opens in new tab)</a>.
+            </p>
+        {% endif %}
 
         {{ govukButton({
             text: "Continue",

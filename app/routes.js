@@ -92,6 +92,7 @@ router.post('/test-reason-answer', function (req, res) {
 
 // test-reason-more.html routing
 router.post('/test-reason-more-answer', function (req, res) {
+    var testReason = req.session.data['test-reason']
     var testReasonMore = req.session.data['test-reason-more']
     if (testReasonMore == "treatments"){
         res.redirect('order-lateral-flow-kits/qualifying-condition')
@@ -105,12 +106,22 @@ router.post('/test-reason-more-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/healthcare-provider-name')
     } else if (testReasonMore == "adult-social-care"){
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
-    } else if (testReasonMore == "return-to-work"){
+    } else if (testReasonMore == "return-to-work" && testReason == "nhs-patient-facing"){
         res.redirect('order-lateral-flow-kits/login-choice')
-    } else if (testReasonMore == "work-with-hi-risk"){
+    } else if (testReasonMore == "return-to-work" && testReason == "ihp-nhs-patients"){
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (testReasonMore == "return-to-work" && testReason == "adult-social-care"){
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
+    } else if (testReasonMore == "work-with-hi-risk" && testReason == "nhs-patient-facing"){
         res.redirect('order-lateral-flow-kits/login-choice')
-    } else if (testReasonMore == "you-are-hi-risk"){
+    } else if (testReasonMore == "work-with-hi-risk" && testReason == "ihp-nhs-patients"){
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (testReasonMore == "you-are-hi-risk" && testReason == "nhs-patient-facing"){
         res.redirect('order-lateral-flow-kits/login-choice')
+    } else if (testReasonMore == "you-are-hi-risk" && testReason == "ihp-nhs-patients"){
+        res.redirect('order-lateral-flow-kits/healthcare-provider-name')
+    } else if (testReasonMore == "not-listed"){
+        res.redirect('order-lateral-flow-kits/england/exit-page-test-pause')
     } else if (testReasonMore == "another"){
         res.redirect('order-lateral-flow-kits/england/exit-page')
     } else {
