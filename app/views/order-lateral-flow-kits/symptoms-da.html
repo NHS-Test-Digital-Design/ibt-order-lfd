@@ -30,24 +30,24 @@
 {# set the routing url based on the delivery post code to route into correct journey #}
 {% set daUrl %}
     {% if data['delPostcode'] == "SC07 1ND" %}
-        scotland/eligibility-scotland
+        scotland/test-reason-category-scotland
     {% elif data['delPostcode'] == "N0R 1ND" %}
-        ni/eligibility-ni
+        ni/test-reason-category-ni
     {% elif data['delPostcode'] == "WA1 3LS" %}
-        wales/eligibility-wales
+        wales/test-reason-category-wales
     {% else %}
-        scotland/eligibility-scotland
+        scotland/test-reason-category-scotland
     {% endif %}
 {% endset %}
 
-{# use the updated postcode if it exists in not ise daUrl#}
+{# use the updated postcode if it exists if not use daUrl#}
 {% set newDaUrl %}
     {% if data['delPostcodeNew'] == "SC07 1ND" %}
-        scotland/eligibility-scotland
+        scotland/test-reason-category-scotland
     {% elif data['delPostcodeNew'] == "N0R 1ND" %}
-        ni/eligibility-ni
+        ni/test-reason-category-ni
     {% elif data['delPostcodeNew'] == "WA1 3LS" %}
-        wales/eligibility-wales
+        wales/test-reason-category-wales
     {% else %}
         {{ daUrl }} 
     {% endif %}

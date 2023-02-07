@@ -1,0 +1,21 @@
+{% set pageTitle = "Most people in Scotland can no longer get free rapid lateral flow tests" %}
+{% extends "layout_question.html" %}
+
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">You can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
+
+    {{ govukButton({
+        text: "Confirm and continue",
+        href: "../symptoms-da",
+        classes: "govuk-!-margin-top-4"
+    }) }}
+
+{% endblock %}
+
+{# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}

@@ -98,7 +98,7 @@
 </h2>
 
 <p class="govuk-body">
-    On the <a href="../login-choice" class="govuk-link">login choice</a> screen selecting 'Create account' forwards to the <a href="../address-lookup/delivery-address-select" class="govuk-link">select delivery address</a> screen replicating the behaviour of a logged in user with mis-matching delivery post codes. Selecting 'Sign in' forwards to the <a href="../check-answers" class="govuk-link">check your answers</a> screen replicating the bahaviour of a logged in user with matching postcode.
+    On the <a href="../blind-partially-sighted" class="govuk-link">login choice</a> screen selecting 'Create account' forwards to the <a href="../address-lookup/delivery-address-select" class="govuk-link">select delivery address</a> screen replicating the behaviour of a logged in user with mis-matching delivery post codes. Selecting 'Sign in' forwards to the <a href="../check-answers" class="govuk-link">check your answers</a> screen replicating the bahaviour of a logged in user with matching postcode.
 </p>
 
 <h2 class="govuk-heading-m">
@@ -143,7 +143,11 @@
             {
                 text:
                 govukTag({
+<<<<<<< HEAD
                     text: "Unchanged",
+=======
+                    text: "unchanged",
+>>>>>>> dev
                     classes: "govuk-tag--blue"
                 })
             }
@@ -375,6 +379,21 @@
         ],
         [
             {
+                html: "<a href='../blind-partially-sighted' class='govuk-link'>Affected by Sight loss?</a>"
+            },
+            {
+                text: "views/blind-partially-sighted.html"
+            },
+            {
+                text:
+                govukTag({
+                    text: "New",
+                    classes: "govuk-tag--green"
+                })
+            }
+        ],
+        [
+            {
                 html: "<a href='../qualifying-condition' class='govuk-link'>COVID-19 treatments</a>"
             },
             {
@@ -450,10 +469,10 @@
         ],
         [
             {
-                html: "<a href='../login-choice' class='govuk-link'>NHS login choice</a>"
+                html: "<a href='../blind-partially-sighted' class='govuk-link'>NHS login choice</a>"
             },
             {
-                text: "views/login-choice.html"
+                text: "views/blind-partially-sighted.html"
             },
             {
                 text:
@@ -728,8 +747,8 @@
             {
                 text:
                 govukTag({
-                    text: "unchanged",
-                    classes: "govuk-tag--blue"
+                    text: "updated",
+                    classes: "govuk-tag--yellow"
                 })
             }
         ],
@@ -738,7 +757,7 @@
                 html: "<a href='../return-to-work' class='govuk-link'>Return to work</a>"
             },
             {
-                text: "order-lateral-flow-kitsreturn-to-work.html"
+                text: "order-lateral-flow-kits/return-to-work.html"
             },
             {
                 text:
@@ -758,8 +777,8 @@
             {
                 text:
                 govukTag({
-                    text: "Unchanged",
-                    classes: "govuk-tag--blue"
+                    text: "updated",
+                    classes: "govuk-tag--yellow"
                 })
             }
         ],

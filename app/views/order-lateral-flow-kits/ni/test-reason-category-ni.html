@@ -1,6 +1,72 @@
 {% set pageTitle = "Why do you need a test?" %}
 {% extends "layout_question.html" %}
 
+
+{% if data['symptoms-da'] === "yes" %}
+    {% set radios = [
+        {
+            value: "treatments",
+            text: "COVID-19 treatments",
+            hint: {
+                text: "You may be eligible for COVID-19 treatments. They're different to vaccinations and are not available to everyone."
+            }
+        },
+        {
+            value: "gp",
+            text: "Asked to take a test",
+            hint: {
+                text: "Your GP or a healthcare professional asked you to take a test."
+            }
+        },
+        {
+            value: "carer",
+            text: "Carer",
+            hint: {
+                text: "You're a carer who provides close personal care for someone who is at higher risk if they contract COVID-19."
+            }
+        },
+        {
+            value: "work",
+            text: "You work in health or social care"
+        },
+        {
+            divider: "or"
+        },
+        {
+            value: "none",
+            text: "The reason is not listed"
+        }
+    ] %}
+    
+    {% else %}
+
+    {% set radios = [
+        {
+            value: "treatments",
+            text: "COVID-19 treatments",
+            hint: {
+                text: "You may be eligible for COVID-19 treatments. They're different to vaccinations and are not available to everyone."
+            }
+        },
+        {
+            value: "gp",
+            text: "Asked to take a test",
+            hint: {
+                text: "Your GP or a healthcare professional asked you to take a test."
+            }
+        },
+        {
+            divider: "or"
+        },
+        {
+            value: "none",
+            text: "The reason is not listed"
+        }
+    ] %}
+
+{% endif %}
+
+
 {% block content %}
     <form action="/reason-category-answer-ni" class="form" method="post">
         {{ govukRadios({
@@ -13,34 +79,7 @@
                     classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
                 }
             }, 
-            items: [
-                {
-                    value: "treatments",
-                    text: "You may be eligible for COVID-19 treatments",
-                    hint: {
-                        text: "These treatments are different to vaccinations and are not available to everyone"
-                    }
-                },
-                {
-                    value: "work",
-                    text: "You work in health or social care and you have COVID-19 symptoms"
-                },
-                {
-                    value: "carer",
-                    text: "You're a carer who provides close personal care for someone who is at higher risk if they contract COVID-19 and you have COVID-19 symptoms"
-                },
-                {
-                    value: "gp",
-                    text: "Your GP or a healthcare professional asked you to take a test"
-                },
-                {
-                    divider: "or"
-                },
-                {
-                    value: "none",
-                    text: "None of these"
-                }
-            ]
+            items: radios
         }) }}
 
         {{ govukButton({

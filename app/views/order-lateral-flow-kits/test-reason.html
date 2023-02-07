@@ -1,0 +1,84 @@
+{% set pageTitle = "Why do you need a test?" %}
+{% extends "layout_question.html" %}
+
+{% if data['do-you-have-symptoms'] === "yes" %}
+    {% set radios = [ 
+        {
+            value: "medical",
+            text: "Medical reasons",
+            hint: {
+                text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
+            } 
+        },
+        {
+            value: "work",
+            text: "Work reasons",
+            hint: {
+                text: "You've been asked to take a test because you work for the NHS, or an NHS-commissioned independent healthcare provider, or in adult social care."
+            }
+        },
+        {
+            divider: "or"
+        },
+        {
+            value: "another",
+            text: "The reason is not listed"
+        }
+    ] %}
+
+    {% else %}
+
+    {% set radios = [
+        {
+            value: "medical",
+            text: "Medical reasons",
+            hint: {
+                text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
+            } 
+        },
+        {
+            value: "nhs-patient-facing",
+            text: "You work for the NHS in a patient-facing role"
+        },
+        {
+            value: "ihp-nhs-patients",
+            text: "You work with NHS patients for an independent healthcare provider"
+        },
+        {
+            value: "adult-social-care",
+            text: "Adult social care",
+            hint: {
+                text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker."
+            } 
+        },
+        {
+            divider: "or"
+        },
+        {
+            value: "another",
+            text: "The reason is not listed"
+        }
+    ] %}
+{% endif %}
+
+{% block content %}
+    <form action="/test-reason-answer" class="form" method="post">
+        {{ govukRadios({
+            idPrefix: "test-reason",
+            name: "test-reason",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+                }
+            }, 
+            items: radios
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
