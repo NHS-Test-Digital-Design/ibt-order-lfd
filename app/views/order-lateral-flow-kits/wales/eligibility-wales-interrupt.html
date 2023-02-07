@@ -1,0 +1,36 @@
+{% set pageTitle = "Most people in Wales can no longer get free rapid lateral flow tests" %}
+{% set colWidth = "govuk-grid-column-full" %}
+{% extends "layout_question.html" %}
+
+{# *** WALES - WALES - WALES *** #}
+
+{% block content %}
+    <div class="govuk-panel govuk-panel--interuption govuk-!-padding-8">
+        <h1 class="govuk-panel__title">
+            {{ pageTitle }}
+        </h1>
+
+        <div class="govuk-panel__body">
+            <p class="govuk-body">You can order tests if:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>
+                    <a href="https://gov.wales/covid-19-treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">a doctor or specialist has said you're eligible for new COVID-19 treatments (opens in new tab)</a>
+                </li>
+                <li>
+                    your GP or healthcare professional asks you to take a test
+                </li>
+            </ul>
+
+            {{ govukButton({
+                text: "Continue",
+                href: "test-reason-category-wales",
+                classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-0"
+            }) }}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{# *** WALES - WALES - WALES *** #}
