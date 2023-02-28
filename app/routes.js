@@ -22,9 +22,9 @@ router.post('/delivery-postcode-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/error/unable-to-deliver')
     } else if (delPostcode == "ERROR"){
         res.redirect('order-lateral-flow-kits/error/postcode-format-error')
-        // if no selection is made send to scotland
+        // if no selection is made send to england
     } else {
-        res.redirect('order-lateral-flow-kits/symptoms-da')
+        res.redirect('order-lateral-flow-kits/condition')
     }
 })
 
