@@ -24,7 +24,7 @@ router.post('/delivery-postcode-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/error/postcode-format-error')
         // if no selection is made send to england
     } else {
-        res.redirect('order-lateral-flow-kits/condition')
+        res.redirect('order-lateral-flow-kits/england/eligibility')
     }
 })
 

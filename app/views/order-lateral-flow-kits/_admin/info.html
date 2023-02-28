@@ -93,6 +93,50 @@
 }) }}
 
 
+
+
+<h2 class="govuk-heading-m govuk-!-margin-top-9">
+    Options
+</h2>
+
+<form action="../postcode" class="form" method="post">
+    {{ govukRadios({
+        idPrefix: "interruption-card",
+        name: "interruption-card",
+        fieldset: {
+            legend: {
+                text: "Interruption Card",
+                isPageHeading: false
+            }
+        },
+        hint: {
+            text: "Display eligibility screens using the interuption card pattern"
+        },
+        items: [
+            {
+                value: "true",
+                text: "True"
+            },
+            {
+                value: "false",
+                text: "False"
+            }
+        ]
+    }) }}
+
+    {{ govukButton({
+        text: "Save"
+    }) }}
+</form>
+
+{{ govukButton({
+    text: "Start",
+    classes: "govuk-!-margin-bottom-9",
+    href: "../../"
+}) }}
+
+
+
 <h2 class="govuk-heading-m">
     Notes
 </h2>
@@ -143,11 +187,7 @@
             {
                 text:
                 govukTag({
-<<<<<<< HEAD
                     text: "Unchanged",
-=======
-                    text: "unchanged",
->>>>>>> dev
                     classes: "govuk-tag--blue"
                 })
             }
