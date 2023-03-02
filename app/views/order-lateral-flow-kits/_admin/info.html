@@ -99,7 +99,7 @@
     Options
 </h2>
 
-<form action="../postcode" class="form" method="post">
+<form action="../../" class="form" method="get">
     {{ govukRadios({
         idPrefix: "interruption-card",
         name: "interruption-card",
@@ -128,13 +128,6 @@
         text: "Save"
     }) }}
 </form>
-
-{{ govukButton({
-    text: "Start",
-    classes: "govuk-!-margin-bottom-9",
-    href: "../../"
-}) }}
-
 
 
 <h2 class="govuk-heading-m">

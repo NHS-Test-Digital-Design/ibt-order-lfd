@@ -1,21 +1,47 @@
 {% set pageTitle = "Most people in Scotland can no longer get free rapid lateral flow tests" %}
+{% if data['interruption-card'] === "flase" %}
+    {% set colWidth = "govuk-grid-column-two-thirds" %}
+{% else %}
+    {% set colWidth = "govuk-grid-column-full" %}
+{% endif %}
+
 {% extends "layout_question.html" %}
 
 {# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}
 
 {% block content %}
-    <h1 class="govuk-heading-l">
-        {{ pageTitle }}
-    </h1>
+    {% if data['interruption-card'] === "false" %}
 
-    <p class="govuk-body">You can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
+        <h1 class="govuk-heading-l">
+            {{ pageTitle }}
+        </h1>
 
-    {{ govukButton({
-        text: "Confirm and continue",
-        href: "../symptoms-da",
-        classes: "govuk-!-margin-top-4"
-    }) }}
+        <p class="govuk-body">You can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
 
+        {{ govukButton({
+            text: "Confirm and continue",
+            href: "../symptoms-da",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+
+    {% else %}
+
+        <div class="govuk-panel govuk-panel--interuption govuk-!-padding-8">
+            <h1 class="govuk-panel__title">
+                    {{ pageTitle }}
+            </h1>
+
+            <div class="govuk-panel__body">
+                <p class="govuk-body">You can only get free rapid lateral flow tests if you're eligible for <a href="https://www.nhsinform.scot/covid19treatments" class="govuk-link" target="_blank" rel="noopener noreferrer">COVID-19 treatments (opens in new tab)</a>.</p>
+
+                {{ govukButton({
+                    text: "Continue",
+                    href: "../symptoms-da",
+                    classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-0"
+                }) }}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {# *** SCOTLAND - SCOTLAND - SCOTLAND *** #}

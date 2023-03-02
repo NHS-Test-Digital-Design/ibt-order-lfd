@@ -1,5 +1,7 @@
 {% set pageTitle = "Most people in England can no longer get free COVID-19 tests" %}
-{% if data['interruption-card'] === "true" %}
+{% if data['interruption-card'] === "flase" %}
+    {% set colWidth = "govuk-grid-column-two-thirds" %}
+{% else %}
     {% set colWidth = "govuk-grid-column-full" %}
 {% endif %}
 
@@ -40,7 +42,6 @@
                 classes: "govuk-!-margin-top-4"
             }) }}
     
-
     {% else %}
 
         <div class="govuk-panel govuk-panel--interuption govuk-!-padding-8">
@@ -80,7 +81,6 @@
                 </div>
             </div>
             
-
     {% endif %}
 {% endblock %}
 
