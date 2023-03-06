@@ -152,7 +152,7 @@ router.post('/reason-category-answer-scotland', function (req, res) {
     if (catscot == "another"){
         res.redirect('order-lateral-flow-kits/scotland/exit-page-scotland')
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
@@ -160,18 +160,18 @@ router.post('/reason-category-answer-scotland', function (req, res) {
 router.post('/reason-category-answer-ni', function (req, res) {
     var catni = req.session.data['test-reason-category-ni']
     if (catni == "treatments"){
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     } else if (catni == "work") {
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
     } else if (catni == "carer") {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     } else if (catni == "gp") {
         res.redirect('order-lateral-flow-kits/date-asked-to-test')
     } else if (catni == "none") {
         res.redirect('order-lateral-flow-kits/ni/exit-page-ni')
         // if no selection is made send down the health route
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
@@ -179,14 +179,14 @@ router.post('/reason-category-answer-ni', function (req, res) {
 router.post('/reason-category-answer-wales', function (req, res) {
     var catwales = req.session.data['test-reason-category-wales']
     if (catwales == "treatments"){
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     } else if (catwales == "gp") {
         res.redirect('order-lateral-flow-kits/date-asked-to-test')
     } else if (catwales == "none") {
         res.redirect('order-lateral-flow-kits/wales/exit-page-wales')
         // if no selection is made send down the health route
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
@@ -224,7 +224,7 @@ router.post('/reason-work-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/england/exit-page')
         // if no selection is made send to login choice
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
@@ -241,7 +241,7 @@ router.post('/reason-work-more-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/healthcare-provider-name')
         // if no selection is made send to login choice
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
@@ -252,7 +252,7 @@ router.post('/treatment-eligible-answer', function (req, res) {
     if (treatment == "no"){
         res.redirect('order-lateral-flow-kits/england/exit-page')
     } else {
-        res.redirect('order-lateral-flow-kits/blind-partially-sighted')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
