@@ -14,7 +14,7 @@
             value: "work",
             text: "Work reasons",
             hint: {
-                text: "You've been asked to take a test because you work for the NHS, or an NHS-commissioned independent healthcare provider, or in adult social care."
+                text: "You care for patients, or care residents, at high risk from COVID-19, and you work for the NHS, a hospice, or with NHS patients for an independent healthcare provider."
             }
         },
         {
@@ -30,26 +30,25 @@
 
     {% set radios = [
         {
-            value: "medical",
-            text: "Medical reasons",
+            value: "treatments",
+            text: "COVID-19 treatments",
             hint: {
-                text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
+                text: "You're in the small group of people with a particular health condition that makes you eligible for specific COVID-19 treatments. These are different to vaccinations."
             } 
         },
         {
-            value: "nhs-patient-facing",
-            text: "You work for the NHS in a patient-facing role"
-        },
-        {
-            value: "ihp-nhs-patients",
-            text: "You work with NHS patients for an independent healthcare provider"
-        },
-        {
-            value: "adult-social-care",
-            text: "Adult social care",
+            value: "hospital",
+            text: "Being admitted into hospital",
             hint: {
-                text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker."
-            } 
+                text: "Your doctor or healthcare professional has told you to get a test because you're being admitted into hospital for a procedure or treatment."
+            }
+        },
+        {
+            value: "asked-to-test",
+            text: "Asked to get a test",
+            hint: {
+                text: "You've spoken to your GP or healthcare professional recently and they asked you to get a test."
+            }
         },
         {
             divider: "or"
