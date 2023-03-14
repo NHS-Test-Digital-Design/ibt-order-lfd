@@ -113,8 +113,6 @@ router.post('/test-reason-more-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/login-choice')
     } else if (testReasonMore == "ihp-nhs-patients"){
         res.redirect('order-lateral-flow-kits/healthcare-provider-name')
-    } else if (testReasonMore == "hospice"){
-        res.redirect('order-lateral-flow-kits/adult-social-care-role')
     } else if (testReasonMore == "return-to-work" && testReason == "nhs-patient-facing"){
         res.redirect('order-lateral-flow-kits/login-choice')
     } else if (testReasonMore == "return-to-work" && testReason == "ihp-nhs-patients"){
