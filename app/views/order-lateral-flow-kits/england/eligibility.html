@@ -1,8 +1,8 @@
 {% set pageTitle = "Most people in England can no longer get free COVID-19 tests" %}
 {% if data['interruption-card'] === "flase" %}
-    {% set colWidth = "govuk-grid-column-two-thirds" %}
-{% else %}
     {% set colWidth = "govuk-grid-column-full" %}
+{% else %}
+    {% set colWidth = "govuk-grid-column-two-thirds" %}
 {% endif %}
 
 {% extends "layout_question.html" %}
@@ -12,75 +12,76 @@
 {% block content %}
     {% if data['interruption-card'] === "false" %}
 
-        <h1 class="govuk-heading-l">
+            <div class="govuk-panel govuk-panel--interuption govuk-!-padding-8">
+            <h1 class="govuk-panel__title">
                 {{ pageTitle }}
             </h1>
 
-            <p class="govuk-body">You may still be able to get free tests if:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    you're eligible for COVID-19 treatments 
-                </li>
-                <li>
-                    you're being admitted into hospital 
-                </li>
-                <li>
-                    you work in the NHS, or for an independent healthcare provider (IHP), or in adult social care
-                </li>
-                <li>
-                    your GP or healthcare professional has recently asked you to get a test
-                </li>
-            </ul>
+            <div class="govuk-panel__body">
+                
+                    
+                <p class="govuk-body">You may still be able to get free tests if:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        you're eligible for COVID-19 treatments (these are different to vaccinations)
+                    </li>
+                    <li>
+                        you're being admitted into hospital 
+                    </li>
+                    <li>
+                        your GP or healthcare professional has recently asked you to get a test
+                    </li>
+                    <li>
+                        you care for patients, or care residents, at high risk from COVID-19, and you have COVID-19 symptoms
+                    </li>
+                </ul>
 
-            <p class="govuk-body">
-                Find out  <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free tests (opens in new tab)</a>
-            </p>
+                <p class="govuk-body">
+                    Find out  <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free tests (opens in new tab)</a>.
+                </p>
 
-            {{ govukButton({
-                text: "Continue",
-                href: "../condition",
-                classes: "govuk-!-margin-top-4"
-            }) }}
+                {{ govukButton({
+                    text: "Continue",
+                    href: "../condition",
+                    classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-0"
+                }) }}
+                    
+            </div>
+        </div>
     
     {% else %}
 
-        <div class="govuk-panel govuk-panel--interuption govuk-!-padding-8">
-                <h1 class="govuk-panel__title">
-                    {{ pageTitle }}
-                </h1>
+        <h1 class="govuk-heading-l">
+            {{ pageTitle }}
+        </h1>
 
-                <div class="govuk-panel__body">
-                    
-                        
-                    <p class="govuk-body">You may still be able to get free tests if:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>
-                            you're eligible for COVID-19 treatments 
-                        </li>
-                        <li>
-                            you're being admitted into hospital 
-                        </li>
-                        <li>
-                            you work in the NHS, or for an independent healthcare provider (IHP), or in adult social care
-                        </li>
-                        <li>
-                            your GP or healthcare professional has recently asked you to get a test
-                        </li>
-                    </ul>
+        <p class="govuk-body">You may still be able to get free tests if:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                you're eligible for COVID-19 treatments (these are different to vaccinations)
+            </li>
+            <li>
+                you're being admitted into hospital 
+            </li>
+            <li>
+                your GP or healthcare professional has recently asked you to get a test
+            </li>
+            <li>
+                you care for patients, or care residents, at high risk from COVID-19, and you have COVID-19 symptoms
+            </li>
+        </ul>
 
-                    <p class="govuk-body">
-                        Find out  <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free tests (opens in new tab)</a>
-                    </p>
+        <p class="govuk-body">
+            Find out  <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/get-tested-for-coronavirus/" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free tests (opens in new tab)</a>.
+        </p>
 
-                    {{ govukButton({
-                        text: "Continue",
-                        href: "../condition",
-                        classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-0"
-                    }) }}
-                        
-                </div>
-            </div>
-            
+        {{ govukButton({
+            text: "Continue",
+            href: "../condition",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+
+
     {% endif %}
 {% endblock %}
 

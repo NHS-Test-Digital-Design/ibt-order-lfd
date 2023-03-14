@@ -38,17 +38,23 @@
     {% set radios = [
         {
             value: "nhs-patient-facing",
-            text: "You work for the NHS in a patient-facing role"
+            text: "NHS",
+            hint: {
+                text: "You work for the NHS, caring for patients at high risk from COVID-19."
+            }
         },
         {
             value: "ihp-nhs-patients",
-            text: "You work with NHS patients for an independent healthcare provider"
+            text: "Independent healthcare provider",
+            hint: {
+                text: "You work for an independent healthcare provider, caring for NHS patients at high risk from COVID-19."
+            }
         },
         {
-            value: "adult-social-care",
-            text: "Adult social care",
+            value: "hospice",
+            text: "Hospice",
             hint: {
-                text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker."
+                text: "You work for a hospice, caring for residents at high risk from COVID-19."
             } 
         },
         {
@@ -59,58 +65,6 @@
             text: "The reason is not listed"
         }
     ] %}
-
-    {% elif data['test-reason'] === "nhs-patient-facing" or data['test-reason'] === "ihp-nhs-patients"%}
-
-    {% set radios = [
-        {
-            value: "return-to-work",
-            text: "Return to work",
-            hint: {
-                text: "You've been off work with COVID-19 and you need a test to return to work."
-            } 
-        },
-        {
-            value: "work-with-hi-risk",
-            text: "Work with high risk people",
-            hint: {
-                text: "You work with people who are at high risk of getting seriously ill from COVID-19 and your employer told you to get a test."
-            } 
-        },
-        {
-            value: "you-are-hi-risk",
-            text: "You're at high risk",
-            hint: {
-                text: "You're at high risk of getting seriously ill from COVID-19 and your employer told you to get a test."
-            } 
-        },
-        {
-            divider: "or"
-        },
-        {
-            value: "not-listed",
-            text: "The reason is not listed"
-        }
-    ]%}
-
-    {% elif data['test-reason'] === "adult-social-care" %}
-
-    {% set radios = [
-        {
-            value: "return-to-work",
-            text: "Return to work",
-            hint: {
-                text: "You've been off work with COVID-19 and you need a test to return to work."
-            } 
-        },
-        {
-            divider: "or"
-        },
-        {
-            value: "not-listed",
-            text: "The reason is not listed"
-        }
-    ]%}
 
 {% endif %}
 
