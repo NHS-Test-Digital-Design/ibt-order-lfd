@@ -99,7 +99,11 @@
     Options
 </h2>
 
+<<<<<<< HEAD
 <form action="../../" class="form" method="get">
+=======
+<form action="../postcode" class="form" method="post">
+>>>>>>> ca4aaf6 (started adding some logic to turn on and off the interruption card)
     {{ govukRadios({
         idPrefix: "interruption-card",
         name: "interruption-card",
@@ -129,6 +133,16 @@
     }) }}
 </form>
 
+<<<<<<< HEAD
+=======
+{{ govukButton({
+    text: "Start",
+    classes: "govuk-!-margin-bottom-9",
+    href: "../../"
+}) }}
+
+
+>>>>>>> ca4aaf6 (started adding some logic to turn on and off the interruption card)
 
 <h2 class="govuk-heading-m">
     Notes
