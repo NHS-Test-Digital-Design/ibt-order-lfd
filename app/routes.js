@@ -49,14 +49,14 @@ router.post('/postcode-da-change-confirm', function (req, res) {
     }
 })
 
-// country DA change confirm routing da-switch-country-confirm.html 
+// country DA change confirm routing da-switch-country-confirm.html
 router.post('/postcode-change-confirmation-answer', function (req, res) {
     var countryChange = req.session.data['countryChangeConfirm']
     var setCountry = req.session.data['deliveryPostcode']
     if (countryChange == "yes" && setCountry == "ENG 1ND") {
         res.redirect('order-lateral-flow-kits/condition')
-    } else if (countryChange == "yes" && setCountry == "SC07 1ND" || 
-            countryChange == "yes" && setCountry == "N0R 1ND" || 
+    } else if (countryChange == "yes" && setCountry == "SC07 1ND" ||
+            countryChange == "yes" && setCountry == "N0R 1ND" ||
             countryChange == "yes" && setCountry == "WA1 3LS") {
         res.redirect('order-lateral-flow-kits/symptoms-da')
     } else {
@@ -64,7 +64,7 @@ router.post('/postcode-change-confirmation-answer', function (req, res) {
     }
 })
 
-// country radio buttons fall back. 
+// country radio buttons fall back.
 router.post('/country-answer', function (req, res) {
     var country = req.session.data['where-do-you-live']
     if (country == "england"){
@@ -96,8 +96,6 @@ router.post('/test-reason-more-answer', function (req, res) {
     var testReasonMore = req.session.data['test-reason-more']
     if (testReasonMore == "treatments"){
         res.redirect('order-lateral-flow-kits/qualifying-condition')
-    } else if (testReasonMore == "hospital") {
-        res.redirect('order-lateral-flow-kits/hospital-name')
     } else if (testReasonMore == "asked-to-test"){
         res.redirect('order-lateral-flow-kits/date-asked-to-test')
     } else if (testReasonMore == "nhs-patient-facing"){
@@ -293,7 +291,7 @@ router.post('/return-to-work-answer', function (req, res) {
 router.post('/delivery-address-postcode-answer', function (req, res) {
     var postcodeFallback = req.session.data['deliveryPostcode']
     var country = req.session.data['where-do-you-live']
-    if (postcodeFallback == "ENG 1ND" && country == "england" || 
+    if (postcodeFallback == "ENG 1ND" && country == "england" ||
         postcodeFallback == "SC07 1ND" && country == "scotland" ||
         postcodeFallback == "N0R 1ND" && country == "ni" ||
         postcodeFallback == "WA1 3LS" && country == "wales" ) {

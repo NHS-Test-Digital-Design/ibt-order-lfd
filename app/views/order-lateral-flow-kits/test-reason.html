@@ -2,13 +2,13 @@
 {% extends "layout_question.html" %}
 
 {% if data['do-you-have-symptoms'] === "yes" %}
-    {% set radios = [ 
+    {% set radios = [
         {
             value: "medical",
             text: "Medical reasons",
             hint: {
-                text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
-            } 
+                text: "You may be eligible for COVID-19 treatments, or your GP or healthcare professional has asked you to take a test."
+            }
         },
         {
             value: "work",
@@ -33,24 +33,17 @@
             value: "medical",
             text: "Medical reasons",
             hint: {
-                text: "You may be eligible for COVID-19 treatments, you're being admitted into hospital for a procedure or treatment, or your GP or healthcare professional has asked you to take a test."
-            } 
+                text: "You may be eligible for COVID-19 treatments, or your GP or healthcare professional has asked you to take a test."
+            }
         },
         {
-            value: "nhs-patient-facing",
-            text: "You work for the NHS in a patient-facing role"
-        },
-        {
-            value: "ihp-nhs-patients",
-            text: "You work with NHS patients for an independent healthcare provider"
-        },
-        {
-            value: "adult-social-care",
-            text: "Adult social care",
+            value: "Work reasons",
+            text: "Work reasons",
             hint: {
-                text: "You work in adult social care as a personal assistant, Shared Lives carer, Care Quality Commission (CQC) inspector or social worker."
-            } 
+              text: "You care for patients, or care residents, at high risk from COVID-19, and you work for the NHS, a hospice, or with NHS patients for an independent healthcare provider."
+            }
         },
+
         {
             divider: "or"
         },
@@ -72,7 +65,7 @@
                     isPageHeading: true,
                     classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
                 }
-            }, 
+            },
             items: radios
         }) }}
 
