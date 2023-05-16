@@ -20,3 +20,11 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/interuption-panel";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+/* Make Secondary button more accessible by increasing contrast on box shadow - based on external audit by DigInclusion in March 23 */
+
+.govuk-button--secondary {
+  box-shadow: 0 2px 0 #444 !important;
+}
+
