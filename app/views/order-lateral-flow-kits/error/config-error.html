@@ -1,0 +1,20 @@
+{% set pageTitle = "Sorry, there is a technical problem" %}
+{% extends "layout_question_no_back.html" %}
+
+{% block content %}
+
+            <h1 class="govuk-heading-l">
+                {{ pageTitle }}
+            </h1>
+
+            <p class="govuk-body">
+                If the problem continues, <a href="https://www.nhs.uk/nhs-services/covid-19-services/when-to-call-119/" target="_blank" rel="noopener noreferrer">find out when you can contact 119 (opens in new tab)</a>. 
+                If you need a British Sign Language (BSL) interpreter, you can <a href="http://signvideo.co.uk/nhs119/" target="_blank" rel="noopener noreferrer">use SignVideo to call 119 (opens in new tab)</a>.
+            </p>
+   
+    {{ govukButton({
+        text: "Try again",
+        href: "javascript:window.history.go(-1);" 
+    }) }}
+    
+{% endblock %}
