@@ -10,8 +10,8 @@ router.post('/delivery-postcode-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/england/eligibility')
     } else if (delPostcode == "SC07 1ND") {
         res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
-    } else if (delPostcode == "N0R 1ND") {
-        res.redirect('order-lateral-flow-kits/ni/eligibility-ni')
+    } else if (delPostcode == "BT41 1AA") {
+        res.redirect('order-lateral-flow-kits/ni/exitpage-ni')
     } else if (delPostcode == "WA1 3LS"){
         res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
     } else if (delPostcode == "ERR 0R1"){
