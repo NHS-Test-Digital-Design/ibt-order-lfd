@@ -7,13 +7,13 @@ const router = express.Router()
 router.post('/delivery-postcode-answer', function (req, res) {
     var delPostcode = req.session.data['delPostcode']
     if (delPostcode == "ENG 1ND") {
-        res.redirect('order-lateral-flow-kits/england/eligibility')
+        res.redirect('order-lateral-flow-kits/england/exit-page')
     } else if (delPostcode == "SC07 1ND") {
-        res.redirect('order-lateral-flow-kits/scotland/eligibility-scotland')
+        res.redirect('order-lateral-flow-kits/scotland/exit-page-scotland')
     } else if (delPostcode == "BT41 1AA") {
         res.redirect('order-lateral-flow-kits/ni/exitpage-ni')
     } else if (delPostcode == "WA1 3LS"){
-        res.redirect('order-lateral-flow-kits/wales/eligibility-wales')
+        res.redirect('order-lateral-flow-kits/wales/exit-page-wales')
     } else if (delPostcode == "ERR 0R1"){
         res.redirect('order-lateral-flow-kits/country-choice')
     } else if (delPostcode == "API ERR"){
@@ -56,7 +56,7 @@ router.post('/postcode-change-confirmation-answer', function (req, res) {
     if (countryChange == "yes" && setCountry == "ENG 1ND") {
         res.redirect('order-lateral-flow-kits/condition')
     } else if (countryChange == "yes" && setCountry == "SC07 1ND" ||
-            countryChange == "yes" && setCountry == "N0R 1ND" ||
+            countryChange == "yes" && setCountry == "BT41 1AA" ||
             countryChange == "yes" && setCountry == "WA1 3LS") {
         res.redirect('order-lateral-flow-kits/symptoms-da')
     } else {
@@ -293,7 +293,7 @@ router.post('/delivery-address-postcode-answer', function (req, res) {
     var country = req.session.data['where-do-you-live']
     if (postcodeFallback == "ENG 1ND" && country == "england" ||
         postcodeFallback == "SC07 1ND" && country == "scotland" ||
-        postcodeFallback == "N0R 1ND" && country == "ni" ||
+        postcodeFallback == "BT41 1AA" && country == "ni" ||
         postcodeFallback == "WA1 3LS" && country == "wales" ) {
         res.redirect('order-lateral-flow-kits/address-lookup/delivery-address-select')
         // if no selection is made send to login choice
