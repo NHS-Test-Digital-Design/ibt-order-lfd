@@ -7,7 +7,7 @@ const router = express.Router()
 router.post('/delivery-postcode-answer', function (req, res) {
     var delPostcode = req.session.data['delPostcode']
     if (delPostcode == "ENG 1ND") {
-        res.redirect('order-lateral-flow-kits/england/exit-page')
+        res.redirect('order-lateral-flow-kits/england/eligibility')
     } else if (delPostcode == "SC07 1ND") {
         res.redirect('order-lateral-flow-kits/scotland/exit-page-scotland')
     } else if (delPostcode == "BT41 1AA") {
