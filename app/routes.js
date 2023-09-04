@@ -81,12 +81,24 @@ router.post('/country-answer', function (req, res) {
 })
 
 // test-reason.html routing
+//router.post('/test-reason-answer', function (req, res) {
+ //   var testReason = req.session.data['test-reason']
+ //   if (testReason == "another"){
+ //       res.redirect('order-lateral-flow-kits/england/exit-page')
+ //   } else {
+ //       res.redirect('order-lateral-flow-kits/test-reason-more')
+ //   }
+// })
+
+// NEW test-reason.html routing for reduced use cases - 04/09/23
 router.post('/test-reason-answer', function (req, res) {
     var testReason = req.session.data['test-reason']
     if (testReason == "another"){
         res.redirect('order-lateral-flow-kits/england/exit-page')
-    } else {
-        res.redirect('order-lateral-flow-kits/test-reason-more')
+    } else if (testReason == "medical"){
+        res.redirect('order-lateral-flow-kits/qualifying-condition')
+    } else if (testReason == "work"){
+        res.redirect('order-lateral-flow-kits/adult-social-care-role')
     }
 })
 
