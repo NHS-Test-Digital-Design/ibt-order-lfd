@@ -1,4 +1,4 @@
-{% set pageTitle = "Most people in England cannot order free tests from this service" %}
+{% set pageTitle = "Most people in England can no longer get free COVID-19 tests" %}
 {% if data['interruption-card'] === "true" %}
     {% set colWidth = "govuk-grid-column-full" %}
 {% else %}
@@ -17,6 +17,9 @@
             <h1 class="govuk-panel__title">
                 {{ pageTitle }}
             </h1>
+
+            <div class="govuk-panel__body">
+
 
                 <p class="govuk-body">You may still be able to get free tests if:</p>
                 <ul class="govuk-list govuk-list--bullet">
@@ -51,26 +54,24 @@
             {{ pageTitle }}
         </h1>
 
-             <p class="govuk-body">You can still order free tests if you work in a hospice, caring for residents at high risk from COVID-19, and you have COVID-19 symptoms.</p>
+             <p class="govuk-body">You may still be able to get free tests if:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        you're eligible for COVID-19 treatments (these are different to vaccinations)
+                    </li>
+                    <li>
+                        you work in a hospice, caring for residents at high risk from COVID-19, and you have COVID-19 symptoms
+                    </li>
+                </ul>
+
+                <p class="govuk-body">
+                    If you work for the NHS, with NHS patients for an independent healthcare provider, or in the adult social care sector, you may still be able to get free rapid lateral flow tests through your employer.
+                </p>
 
                 <p class="govuk-body">
                     Find out  <a href="https://www.nhs.uk/nhs-services/covid-19-services/testing-for-covid-19/who-can-get-a-free-nhs-covid-19-rapid-lateral-flow-test/" class="govuk-link" target="_blank" rel="noopener noreferrer">who can get free tests (opens in new tab)</a>
                 </p>
 
-                <h2 class="govuk-heading-m">COVID-19 treatments</h2>
-                <p class="govuk-body">
-                    If you're eligible for COVID-19 treatments (these are different to vaccinations), you may be able to get free tests from a pharmacy.
-                </p>
-                <p class="govuk-body">
-                    <a href="https://www.nhs.uk/service-search/pharmacy/find-a-pharmacy">Find a pharmacy near you</a><span class="govuk-visually-hidden">to get free tests if you're eligible for COVID-19 treatment</span>
-                </p>    
-
-                <h2 class="govuk-heading-m">If you work in health or social care</h2>
-                <p class="govuk-body">
-                  If you work for the NHS, with NHS patients for an independent healthcare provider, or in the adult social care sector, you may still be able to get free rapid lateral flow tests through your employer.
-                </p>
-
-                
         {{ govukButton({
             text: "Continue",
             href: "../condition",
