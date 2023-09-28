@@ -96,7 +96,7 @@ router.post('/test-reason-answer', function (req, res) {
     if (testReason == "another"){
         res.redirect('order-lateral-flow-kits/england/exit-page')
     } else if (testReason == "medical"){
-        res.redirect('order-lateral-flow-kits/qualifying-condition')
+        res.redirect('order-lateral-flow-kits/england/av-exit')
     } else if (testReason == "work"){
         res.redirect('order-lateral-flow-kits/adult-social-care-role')
     }
