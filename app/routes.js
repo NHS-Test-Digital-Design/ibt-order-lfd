@@ -38,6 +38,16 @@ router.post('/delivery-postcode-change-answer', function (req, res) {
     }
 })
 
+// condition.html routing.
+router.post('/condition-answer', function (req, res) {
+    var condition = req.session.data['condition']
+    if (condition == "no"){
+        res.redirect('order-lateral-flow-kits/england/exit-page')
+    } else {
+        res.redirect('order-lateral-flow-kits/test-reason')
+    }
+})
+
 
 // country DA change confirm routing - Change to Scotland.
 router.post('/postcode-da-change-confirm', function (req, res) {
@@ -254,6 +264,8 @@ router.post('/reason-work-more-answer', function (req, res) {
         res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
+
+
 
 
 // qualifying-condition.html routing.

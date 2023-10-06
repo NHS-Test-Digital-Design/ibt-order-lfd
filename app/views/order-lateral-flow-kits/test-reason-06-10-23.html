@@ -4,6 +4,13 @@
 {% if data['do-you-have-symptoms'] === "yes" %}
     {% set radios = [
         {
+            value: "medical",
+            text: "COVID-19 treatments",
+            hint: {
+                text: "You're in the small group of people with a particular health condition that makes you eligible for specific COVID-19 treatments. These are different to vaccinations."
+            }
+        },
+        {
             value: "work",
             text: "Hospice",
             hint: {
@@ -11,8 +18,11 @@
             }
         },
         {
+            divider: "or"
+        },
+        {
             value: "another",
-            text: "Another reason"
+            text: "The reason is not listed"
         }
     ] %}
 
@@ -28,7 +38,7 @@
         },
         {
             value: "another",
-            text: "Another reason"
+            text: "The reason is not listed"
         }
     ] %}
 {% endif %}
