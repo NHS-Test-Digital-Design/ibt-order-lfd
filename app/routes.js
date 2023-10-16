@@ -42,7 +42,7 @@ router.post('/delivery-postcode-change-answer', function (req, res) {
 router.post('/condition-answer', function (req, res) {
     var condition = req.session.data['condition']
     if (condition == "no"){
-        res.redirect('order-lateral-flow-kits/england/exit-page')
+        res.redirect('order-lateral-flow-kits/test-reason')
     } else {
         res.redirect('order-lateral-flow-kits/test-reason')
     }
@@ -108,7 +108,7 @@ router.post('/test-reason-answer', function (req, res) {
     } else if (testReason == "medical"){
         res.redirect('order-lateral-flow-kits/england/av-exit')
     } else if (testReason == "work"){
-        res.redirect('order-lateral-flow-kits/adult-social-care-role')
+        res.redirect('order-lateral-flow-kits/login-choice')
     }
 })
 
