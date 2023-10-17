@@ -108,7 +108,7 @@ router.post('/test-reason-answer', function (req, res) {
     } else if (testReason == "medical"){
         res.redirect('order-lateral-flow-kits/england/av-exit')
     } else if (testReason == "work"){
-        res.redirect('order-lateral-flow-kits/login-choice')
+        res.redirect('order-lateral-flow-kits/qualifying-condition')
     }
 })
 
