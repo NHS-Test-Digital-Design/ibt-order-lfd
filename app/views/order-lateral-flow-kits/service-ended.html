@@ -1,64 +1,75 @@
-{% set pageTitle = "This COVID-19 service has ended" %}
-{% extends "layout.html" %}
+{% set pageTitle = "Free rapid lateral flow tests are no longer available on this service" %}
+{% extends "layout_question.html" %}
 
-{% block beforeContent %}
-    {% include "includes/breadcrumbs.html" %}
-{% endblock %}
+{# *** ENGLAND - ENGLAND - ENGLAND *** #}
 
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">
-                {{ pageTitle }}
-            </h1>
 
-            <p class="govuk-body">
-                Find out more about testing guidance across the UK:
-            </p>
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
 
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/" class="govuk-link">England: testing guidance</a>
-                </li>
-                <li>
-                    <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19/" class="govuk-link">Scotland: testing guidance</a>
-                </li>
-                <li>
-                    <a href="https://www.gov.wales/testing-coronavirus" class="govuk-link">Wales: testing guidance</a>
-                </li>
-                <li>
-                    <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-testing-and-stay-home-advice" class="govuk-link">Northern Ireland: testing guidance</a>
-                </li>
-            </ul>
+        <p class="govuk-body">
+            Do not phone for a test. You will not be able to get one this way.
+        </p>
+        <p class="govuk-body">
+            You can buy a test from some pharmacies and retailers.
+    </p>
 
-            <h2 class="govuk-heading-m">
-                Get a rapid lateral flow test
-            </h2>
+    <h2 class="govuk-heading-m">
+        If you have symptoms
+    </h2>
 
-            <p class="govuk-body">
-                You might be eligible to <a href="https://www.gov.uk/order-coronavirus-rapid-lateral-flow-tests" class="govuk-link">get free NHS rapid lateral flow tests sent to your home</a>.
-            </p>
-            <p class="govuk-body">
-                Free NHS rapid lateral flow tests are no longer available at pharmacies in England.
-            </p>
-            <p class="govuk-body">
-                You can buy rapid lateral flow tests from some pharmacies and retailers, in person or online.
-            </p>
+        <p class="govuk-body">
+            Find out <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/symptoms/main-symptoms/" class="govuk-link"> what to do if you think you have COVID-19</a>.
+        </p>
+        <p class="govuk-body">
+            If you have symptoms and they get worse, contact 111 or speak to your GP. In an emergency dial 999. 
+        </p>
 
-            <h2 class="govuk-heading-m">
-                Report a lateral flow test result
-            </h2>
+    <h2 class="govuk-heading-m">
+        If you're worried
+    </h2>
 
-            <p class="govuk-body">
-                You can <a href="https://www.gov.uk/report-covid19-result" class="govuk-link">report a free NHS rapid lateral flow test result</a>.
-            </p>
+        <p class="govuk-body">
+            Find out <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/how-to-avoid-catching-and-spreading-coronavirus-covid-19/" class="govuk-link"> how to avoid catching and spreading COVID-19</a>.
+        </p>
+        <p class="govuk-body">
+            You can also find <a href="https://www.nhs.uk/every-mind-matters/coronavirus/" class="govuk-link">advice and support if you're worried about COVID-19</a>.
+        </p>
+
+       <h2 class="govuk-heading-m">Other ways to get free tests</h2>
+
+           <h3 class="govuk-heading-s">If you're eligible for COVID-19 treatments</h3>
+
+                <p class="govuk-body">
+                    You can get free tests from a pharmacy.
+                    <a href="https://www.nhs.uk/service-search/pharmacy/find-a-pharmacy">Find a pharmacy near you</a>.<span class="govuk-visually-hidden">to get free tests if you're eligible for COVID-19 treatment</span>
+                </p>   
+
+            <h3 class="govuk-heading-s">
+                  If you work in health, a hospice or social care
+            </h3>
+
+                 <p class="govuk-body">
+                    You may be able to get free rapid lateral flow tests through your employer if you work:
+                </p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>for the NHS</li>
+                        <li>with NHS patients for an independent healthcare provider</li>
+                        <li>in the adult social care sector</li>
+                        <li>in a hospice</li>
+                    </ul>
             
-            <p class="govuk-body">
-                If you used a paid-for test, check with your test provider for guidance on how to report your result.
-            </p>
+                <p class="govuk-body">
+                    <a href="https://www.gov.uk/guidance/coronavirus-covid-19-testing-for-hospices" class="govuk-link">Hospice workers: check the latest testing guidance</a>
+                </p>
+                <p class="govuk-body">
+                    <a href="https://www.gov.uk/government/publications/infection-prevention-and-control-in-adult-social-care-covid-19-supplement" class="govuk-link">Adult social care services: check the latest testing guidance</a>
+                </p>
 
+  
 
-        </div>
-    </div>
-    {# end grid row #}
 {% endblock %}
+
+{# *** ENGLAND - ENGLAND - ENGLAND *** #}
