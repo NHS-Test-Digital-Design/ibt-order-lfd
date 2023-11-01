@@ -1,4 +1,4 @@
-{% set pageTitle = "Free rapid lateral flow tests are no longer available on this service" %}
+{% set pageTitle = "You are not eligible for free rapid lateral flow tests  " %}
 {% extends "layout_question.html" %}
 
 {# *** scotland - scotland - scotland *** #}
@@ -9,12 +9,13 @@
         {{ pageTitle }}
     </h1>
 
-    <p class="govuk-body">
-        Do not phone for a test. You will not be able to get one this way.
-    </p>
+    {{ govukWarningText({
+        text: "Do not phone for a test. You will not be able to get one this way.",
+        iconFallbackText: "Warning"
+    }) }}
 
     <p class="govuk-body">
-        You can buy a test from some pharmacies and shops, in person and online.
+        Although you cannot get free tests, you can buy COVID-19 tests from some pharmacies and shops, in person and online.
     </p>
 
     <h2 class="govuk-heading-m">
@@ -27,22 +28,6 @@
     <p class="govuk-body">
         You can also find <a href="https://www.nhs.uk/every-mind-matters/coronavirus/" class="govuk-link">advice and support if you're worried about COVID-19</a>.
     </p>
-
-    <h2 class="govuk-heading-m">
-        Other ways to get free tests
-    </h2>
-
-    <h3 class="govuk-heading-s">
-        Other ways to get free tests
-    </h3>
-
-    <p class="govuk-body">
-        <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19-treatments" rel="noreferrer noopener">Find out how to get a test if you're eligible for COVID-19 treatments</a>.
-    </p>
-
-
-
-
 {% endblock %}
 
 {# *** scotland - scotland - scotland *** #}
